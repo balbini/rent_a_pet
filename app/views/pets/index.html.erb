@@ -1,0 +1,9 @@
+<h1>Show all the pets</h1>
+<hr>
+<% @pets.each do |pet| %>
+  <p><strong>Name: </strong> <%= pet.name %> </p>
+  <p><strong>Breed: </strong> <%= pet.breed %> </p>
+  <p><strong>Age: </strong> <%= pet.age %> </p>
+  <p><strong>Image: </strong> <%= pet.image %> </p>
+  <hr>
+<% end %>
