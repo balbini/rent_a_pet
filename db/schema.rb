@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170928062740) do
+ActiveRecord::Schema.define(version: 20170928224754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20170928062740) do
   create_table "jobs", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.string "location"
+    t.string "zip"
     t.date "begin_date"
     t.date "end_date"
     t.integer "dollar_value"
@@ -41,6 +41,11 @@ ActiveRecord::Schema.define(version: 20170928062740) do
     t.date "expiration_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.integer "owner_id"
+    t.integer "freelancer_id"
   end
 
   create_table "pets", force: :cascade do |t|
@@ -74,7 +79,6 @@ ActiveRecord::Schema.define(version: 20170928062740) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "roles"
     t.string "about_me"
     t.string "address"
     t.string "city"
@@ -87,4 +91,6 @@ ActiveRecord::Schema.define(version: 20170928062740) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "jobs", "users", column: "freelancer_id"
+  add_foreign_key "jobs", "users", column: "owner_id"
 end
