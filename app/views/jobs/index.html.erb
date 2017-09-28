@@ -1,16 +1,7 @@
-<h1>Show all the Jobs</h1>
-<hr>
-<% @jobs.each do |job| %>
-  <p><strong>Title: </strong> <%= job.title %> </p>
-  <p><strong>Description: </strong> <%= job.description %> </p>
-  <p><strong>Location: </strong> <%= job.location %> </p>
-  <p><strong>Begin Date: </strong> <%= job.begin_date %> </p>
-  <p><strong>End Date: </strong> <%= job.end_date %> </p>
-  <p><strong>Dollar Value: </strong> <%= job.dollar_value %> </p>
-  <p><strong>Type of Job: </strong> <%= job.type_of_job %> </p>
-  <p><strong>Status: </strong> <%= job.status %> </p>
-  <p><strong>Recurring: </strong> <%= job.recurring %> </p>
-  <p><strong>Pet Location: </strong> <%= job.pet_location %> </p>
-  <p><strong>Expiration Date: </strong> <%= job.expiration_date %> </p>
-  <hr>
-<% end %>
+<div class="container">
+    <h1>Welcome!</h1>
+    <p>Register to get started.</p>
+    <p>
+      <%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
+    </p>
+</div>

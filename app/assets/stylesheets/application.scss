@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "materialize/components/color";
+ @import 'materialize';
+ @import "materialize/extras/nouislider";
+
+li {
+  background: pink;
+  border-style: solid;
+}
