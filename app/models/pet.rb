@@ -1,3 +1,3 @@
 class Pet < ApplicationRecord
-  belongs :owner, dependent: :destroy
+  belongs_to :user, dependent: :destroy, optional: true
 end
