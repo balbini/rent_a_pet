@@ -18,7 +18,19 @@
  @import 'materialize';
  @import "materialize/extras/nouislider";
 
-li {
-  background: pink;
-  border-style: solid;
+
+.nav-wrapper {
+  background: #5e35b1;
+}
+
+p {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+h1 {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+body {
+  background: #e3f2fd;
 }

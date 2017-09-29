@@ -10,8 +10,8 @@ class User < ApplicationRecord
   include FriendlyId
   friendly_id :first_name_and_last_name, use: [:finders, :slugged]
   # creation of the friendly_id for the urls
-  def first_name_and_last_name_and_id
-    "#{first_name}-#{last_name}-#{id}"
+  def first_name_and_last_name
+    "#{first_name}-#{last_name}"
   end
 
 end
