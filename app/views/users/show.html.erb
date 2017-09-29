@@ -46,6 +46,71 @@
   </div>
 
 
+  <!-- Start of jobs where they are the owner -->
+    <div class="container">
+      <h4> My job postings </h4>
+      <% @posted_jobs.each do |posted_job| %>
+      <div class ="row">
+          <div class="col s12 m6" style="border: red solid 2px">
+            <!-- decide if we want people who are currently working on jobs to update or note and then delete or not delete -->
+            <div class='right-align'>
+              <%= link_to edit_job_path(posted_job.id) do %>
+                <i class="material-icons">edit</i>
+              <% end %>
+            </div>
+            <div>
+              <p><strong>Title: </strong> <%= posted_job.title %> </p>
+              <p><strong>Description: </strong> <%= posted_job.description %> </p>
+              <p><strong>Address: </strong> <%= posted_job.address %> </p>
+              <p><strong>City: </strong> <%= posted_job.city %> </p>
+              <p><strong>State: </strong> <%= posted_job.state %> </p>
+              <p><strong>Zip: </strong> <%= posted_job.zip %> </p>
+              <p><strong>Begin Date: </strong> <%= posted_job.begin_date %> </p>
+              <p><strong>End Date: </strong> <%= posted_job.end_date %> </p>
+              <p><strong>Dollar Value: </strong> <%= posted_job.dollar_value %> </p>
+              <p><strong>Type of Job: </strong> <%= posted_job.type_of_job %> </p>
+              <p><strong>Status: </strong> <%= posted_job.status %> </p>
+              <p><strong>Recurring: </strong> <%= posted_job.recurring %> </p>
+              <p><strong>Pet Location: </strong> <%= posted_job.pet_location %> </p>
+              <p><strong>Expiration Date: </strong> <%= posted_job.expiration_date %>
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+<!-- Start of jobs where they are the freelancer -->
+  <div class="container">
+    <h4> My jobs that I am working on </h4>
+    <% @working_jobs.each do |working_job| %>
+    <div class ="row">
+        <div class="col s12 m6" style="border: red solid 2px">
+          <!-- decide if we want people who are currently working on jobs to update or note and then delete or not delete -->
+          <div class='right-align'>
+            <%= link_to edit_job_path(working_job.id) do %>
+              <i class="material-icons">edit</i>
+            <% end %>
+          </div>
+          <div>
+            <p><strong>Title: </strong> <%= working_job.title %> </p>
+            <p><strong>Description: </strong> <%= working_job.description %> </p>
+            <p><strong>Address: </strong> <%= working_job.address %> </p>
+            <p><strong>City: </strong> <%= working_job.city %> </p>
+            <p><strong>State: </strong> <%= working_job.state %> </p>
+            <p><strong>Zip: </strong> <%= working_job.zip %> </p>
+            <p><strong>Begin Date: </strong> <%= working_job.begin_date %> </p>
+            <p><strong>End Date: </strong> <%= working_job.end_date %> </p>
+            <p><strong>Dollar Value: </strong> <%= working_job.dollar_value %> </p>
+            <p><strong>Type of Job: </strong> <%= working_job.type_of_job %> </p>
+            <p><strong>Status: </strong> <%= working_job.status %> </p>
+            <p><strong>Recurring: </strong> <%= working_job.recurring %> </p>
+            <p><strong>Pet Location: </strong> <%= working_job.pet_location %> </p>
+            <p><strong>Expiration Date: </strong> <%= working_job.expiration_date %>
+          </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <!-- PAGINATION -->
 

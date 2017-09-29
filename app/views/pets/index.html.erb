@@ -4,6 +4,15 @@
   <p><strong>Name: </strong> <%= pet.name %> </p>
   <p><strong>Breed: </strong> <%= pet.breed %> </p>
   <p><strong>Age: </strong> <%= pet.age %> </p>
+  <p><strong>About Me: </strong> <%= pet.about_me %> </p>
   <p><strong>Image: </strong> <%= image_tag pet.image, class:"img-fluid" %> </p>
+  <% if pet.jobs.length > 0 %>
+    <p><%= "Listed Job" + (pet.jobs.length == 1? ":" : "s:") %></p>
+    <ul>
+      <% pet.jobs.each do |job| %>
+        <li><strong>Job Title: </strong> <%= job.title %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <hr>
 <% end %>
