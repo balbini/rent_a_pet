@@ -15,6 +15,10 @@
         <b>Location: </b><%= @user.city %> <br>
         <b>Date Joined: </b><%= @user.created_at.strftime("%B").to_s + " " + @user.created_at.year.to_s %></p>
     </div>
+    <div class="center-align">
+      <%= link_to new_pet_path %>
+    <a class="btn center-align">Add Pet</a>
+  </div>
   </div>
 </div>
 <!-- end profile -->
