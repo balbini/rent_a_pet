@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  # NO COMMENTS! IS CHECK_OWNER BEING USED ANYWHERE?
   # before_action :check_owner, except: [:show]
   protected
 
