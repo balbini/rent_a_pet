@@ -13,7 +13,10 @@
   <p><strong>Type of Job: </strong> <%= job.type_of_job %> </p>
   <p><strong>Status: </strong> <%= job.status %> </p>
   <p><strong>Recurring: </strong> <%= job.recurring %> </p>
+  <p><strong>Pet: </strong> <%= job.pet.name %> </p>
   <p><strong>Pet Location: </strong> <%= job.pet_location %> </p>
+  <p><strong>Owner: </strong> <%= job.owner.first_name %> <%= job.owner.last_name %></p>
+  <p><strong>freelancer: </strong> <%= job.freelancer.first_name %> <%= job.freelancer.last_name %></p>
   <p><strong>Expiration Date: </strong> <%= job.expiration_date %> </p>
   <hr>
 <% end %>
