@@ -1,4 +1,10 @@
 class User < ApplicationRecord
+  # B/c two one-to-many relationship with the user_ID acting as the two FKs in the jobs table we had to further specify the class name and the actual name of the FK in the jobs table
+
+  has_many :posted_jobs, :class_name => "Job", :foreign_key => "owner_id", dependent: :destroy
+  has_many :working_jobs, :class_name => "Job", :foreign_key => "freelancer_id", dependent: :destroy
+  # the dependent destroy is saying that when the user goes away the job goes away
+  has_many :pets, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
