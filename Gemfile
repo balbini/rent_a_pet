@@ -61,3 +61,5 @@ gem 'jquery-rails'
 gem 'ffaker'
 
 gem 'friendly_id'
+
+gem 'kaminari'
