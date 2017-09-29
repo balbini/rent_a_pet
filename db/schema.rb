@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20170928234852) do
     t.string "state"
     t.string "zip"
     t.string "slug"
+    t.string "image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
