@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 20170929010405) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "users_id"
-    t.index ["users_id"], name: "index_pets_on_users_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -96,5 +96,5 @@ ActiveRecord::Schema.define(version: 20170929010405) do
 
   add_foreign_key "jobs", "users", column: "freelancer_id"
   add_foreign_key "jobs", "users", column: "owner_id"
-  add_foreign_key "pets", "users", column: "users_id"
+  add_foreign_key "pets", "users"
 end
