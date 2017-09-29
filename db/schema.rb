@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170929060926) do
+ActiveRecord::Schema.define(version: 20170929210828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 20170929060926) do
     t.string "state"
     t.integer "owner_id"
     t.integer "freelancer_id"
+    t.bigint "pet_id"
+    t.index ["pet_id"], name: "index_jobs_on_pet_id"
   end
 
   create_table "pets", force: :cascade do |t|
@@ -95,6 +97,7 @@ ActiveRecord::Schema.define(version: 20170929060926) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "jobs", "pets"
   add_foreign_key "jobs", "users", column: "freelancer_id"
   add_foreign_key "jobs", "users", column: "owner_id"
   add_foreign_key "pets", "users"
