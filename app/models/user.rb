@@ -6,7 +6,7 @@ class User < ApplicationRecord
   # the dependent destroy is saying that when the user goes away the job goes away
   has_many :pets, dependent: :destroy
   # user has many pets - so if the user gets deleted so their pets
-  
+
   # Include default devise modules. Others available are:
   # :confirmable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
