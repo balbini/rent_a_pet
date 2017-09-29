@@ -1,5 +1,6 @@
 Pet.destroy_all
 Job.destroy_all
+User.destroy_all
 
 Pet.create([
   {
@@ -7,66 +8,113 @@ Pet.create([
     breed: "German Shepherd",
     age: 2,
     image: "german_shepherd.jpeg",
+    user: User.all.sample,
   },
   {
     name: "Sagget",
     breed: "Labrador",
     age: 1,
     image: "labrador.jpeg",
+    user: User.all.sample,
   },
   {
     name: "Jimbo",
     breed: "Rottweiler",
     age: 3,
     image: "rottweiler.jpeg",
+    user: User.all.sample,
   },
   {
     name: "Sammy",
     breed: "Beagle",
     age: 4,
     image: "beagle.jpeg",
+    user: User.all.sample,
   },
   {
     name: "Joey",
     breed: "Bulldog",
     age: 3,
     image: "bulldog.jpeg",
+    user: User.all.sample,
   },
   {
     name: "Roney",
     breed: "Golden Retriever",
     age: 2,
     image: "golden_retriever.jpeg",
+    user: User.all.sample,
   },
   {
     name: "Tim",
     breed: "Great Dane",
     age: 2,
     image: "great_dane.jpeg",
+    user: User.all.sample,
   },
   {
     name: "Tommy",
     breed: "Poodle",
     age: 5,
     image: "poodle.jpeg",
+    user: User.all.sample,
   },
   {
     name: "Dax",
     breed: "Doberman Pinscher",
     age: 2,
     image: "doberman_pinscher.jpeg",
+    user: User.all.sample,
   },
   {
     name: "Bobby",
     breed: "Dachshund",
     age: 3,
     image: "dachshund.jpeg",
+    user: User.all.sample,
   },
   {
     name: "Yar",
     breed: "Siberian Husky",
     age: 2,
     image: "siberian_husky.jpeg",
+    user: User.all.sample,
+  },
+])
+
+User.create([
+  {
+    first_name: "Chanel",
+    last_name: "Sparks",
+    about_me: "I LOVE DOGS!!",
+    address: "225 Geary St.",
+    city: "San Francisco",
+    state: "CA",
+    zip: "94108",
+    email: "csparks@unkown.com",
+    password: "pizzaa",
+  },
+  {
+    first_name: "Ashley",
+    last_name: "Sparks",
+    about_me: "DOGS ARE THE BEST",
+    address: "1230 Grant Ave",
+    city: "San Francisco",
+    state: "CA",
+    zip: "94133",
+    email: "asparks@unkown.com",
+    password: "pizzaa",
+  },
+  {
+    first_name: "Janet",
+    last_name: "Sparks",
+    about_me: "MY DOG IS MY BEST FRIEND",
+    address: "39 New Montgomery St",
+    city: "San Francisco",
+    state: "CA",
+    zip: "94105",
+    email: "jsparks@unkown.com",
+    password: "pizzaa",
   },
 ])
 
@@ -83,6 +131,8 @@ Job.create([
     recurring: "no",
     pet_location: "owner's home",
     # expiration_date: 2017-10-05,
+    owner:User.all.first,
+    freelancer:User.all.second,
   },
   {
     title: "2-day help needed for my dog",
@@ -97,6 +147,8 @@ Job.create([
     recurring: "no",
     pet_location: "care taker's home",
     # expiration_date: 2017-10-06,
+    owner:User.all.first,
+    freelancer:User.all.third,
   },
   {
     title: "Special dog needs special care",
@@ -111,6 +163,8 @@ Job.create([
     recurring: "no",
     pet_location: "owner's home",
     # expiration_date: 2017-10-10,
+    owner:User.all.second,
+    freelancer:User.all.first,
   },
   {
     title: "Dog walker needed",
@@ -124,6 +178,8 @@ Job.create([
     recurring: "yes",
     pet_location: "owner's home",
     # expiration_date: 2017-10-09,
+    owner:User.all.second,
+    freelancer:User.all.third,
   },
   {
     title: "Seeking a dog pack for my dog to join in on weekend",
@@ -139,6 +195,8 @@ Job.create([
     recurring: "yes",
     pet_location: "Your place",
     # expiration_date: 2017-10-05,
+    owner:User.all.third,
+    freelancer:User.all.first,
   },
   {
     title: "Going abroad for 4 weeks and need help on my 2 puppies",
@@ -154,6 +212,8 @@ Job.create([
     recurring: "no",
     pet_location: "Caretaker's place",
     # expiration_date: 2017-10-25,
+    owner:User.all.third,
+    freelancer:User.all.second,
   },
   {
     title: "Walk them dogs",
@@ -167,6 +227,8 @@ Job.create([
     recurring: "no",
     pet_location: "owner's home",
     # expiration_date: 2017-10-20,
+    owner:User.all.first,
+    freelancer:User.all.second,
   },
   {
     title: "Take care of my dog for 1 day",
@@ -180,6 +242,8 @@ Job.create([
     recurring: "no",
     pet_location: "owner's home",
     # expiration_date: 2017-10-05,
+    owner:User.all.first,
+    freelancer:User.all.third,
   },
   {
     title: "Gone for a weekend",
@@ -195,6 +259,8 @@ Job.create([
     recurring: "no",
     pet_location: "owner's home",
     # expiration_date: 2017-10-01,
+    owner:User.all.second,
+    freelancer:User.all.first,
   },
   {
     title: "Take my dog home for a day",
@@ -208,6 +274,8 @@ Job.create([
     recurring: "no",
     pet_location: "Your place",
     # expiration_date: 2017-10-07,
+    owner:User.all.second,
+    freelancer:User.all.third,
   },
   {
     title: "Shower and fur trimming",
@@ -222,5 +290,7 @@ Job.create([
     recurring: "no",
     pet_location: "owner's home",
     # expiration_date: 2017-10-10,
+    owner:User.all.third,
+    freelancer:User.all.second,
   },
 ])
