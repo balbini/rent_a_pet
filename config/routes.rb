@@ -7,9 +7,7 @@ Rails.application.routes.draw do
   get '/show_all_jobs', to: "jobs#show_all_jobs"
   resources :jobs
   resources :pets
-
+  resources :users, param: :slug
 
   get '/secret', to: 'jobs#secret', as: :secret
-
-  resources :users, param: :slug
 end
