@@ -1,226 +1,86 @@
-Pet.destroy_all
-Job.destroy_all
+Pet.delete_all
+User.delete_all
 
-Pet.create([
-  {
-    name: "Johan",
-    breed: "German Shepherd",
-    age: 2,
-    image: "german_shepherd.jpeg",
-  },
-  {
-    name: "Sagget",
-    breed: "Labrador",
-    age: 1,
-    image: "labrador.jpeg",
-  },
-  {
-    name: "Jimbo",
-    breed: "Rottweiler",
-    age: 3,
-    image: "rottweiler.jpeg",
-  },
-  {
-    name: "Sammy",
-    breed: "Beagle",
-    age: 4,
-    image: "beagle.jpeg",
-  },
-  {
-    name: "Joey",
-    breed: "Bulldog",
-    age: 3,
-    image: "bulldog.jpeg",
-  },
-  {
-    name: "Roney",
-    breed: "Golden Retriever",
-    age: 2,
-    image: "golden_retriever.jpeg",
-  },
-  {
-    name: "Tim",
-    breed: "Great Dane",
-    age: 2,
-    image: "great_dane.jpeg",
-  },
-  {
-    name: "Tommy",
-    breed: "Poodle",
-    age: 5,
-    image: "poodle.jpeg",
-  },
-  {
-    name: "Dax",
-    breed: "Doberman Pinscher",
-    age: 2,
-    image: "doberman_pinscher.jpeg",
-  },
-  {
-    name: "Bobby",
-    breed: "Dachshund",
-    age: 3,
-    image: "dachshund.jpeg",
-  },
-  {
-    name: "Yar",
-    breed: "Siberian Husky",
-    age: 2,
-    image: "siberian_husky.jpeg",
-  },
-])
+user_1 = User.create({
+  first_name: "Chanel",
+  last_name: "Sparks",
+  about_me: "I LOVE DOGS!!",
+  address: "225 Geary St.",
+  city: "San Francisco",
+  state: "CA",
+  zip: "94108",
+  email: "csparks@unkown.com",
+  password: "pizzaa",
+  image: "http://www.boostinspiration.com/wp-content/uploads/2010/09/BlackAndWhitePhotographyPeople1.jpg",
+})
 
-Job.create([
-  {
-    title: "Need help to walk my dog for 5 days",
-    description: "Walk the dog in the morning and evening",
-    location: "San Francisco",
-    # begin_date: 2017-10-07,
-    # end_date: 2017-10-11,
-    dollar_value: 3,
-    type_of_job: "Walk the dog",
-    status: "posted",
-    recurring: "no",
-    pet_location: "owner's home",
-    # expiration_date: 2017-10-05,
-  },
-  {
-    title: "2-day help needed for my dog",
-    description: "I will be out-of-town for 2 days and need someone to look
-                  after my dog during the time",
-    location: "Oakland",
-    # begin_date: 2017-10-09,
-    # end_date: 2017-10-11,
-    dollar_value: 2,
-    type_of_job: "Care taker",
-    status: "posted",
-    recurring: "no",
-    pet_location: "care taker's home",
-    # expiration_date: 2017-10-06,
-  },
-  {
-    title: "Special dog needs special care",
-    description: "My dog needs care for a weekend. He also needs to take
-                  medications in the morning and evening.",
-    location: "San Francisco",
-    # begin_date: 2017-10-14,
-    # end_date: 2017-10-15,
-    dollar_value: 4,
-    type_of_job: "Special care",
-    status: "posted",
-    recurring: "no",
-    pet_location: "owner's home",
-    # expiration_date: 2017-10-10,
-  },
-  {
-    title: "Dog walker needed",
-    description: "Walk the dog every weekday at 10:00am",
-    location: "Daly City",
-    # begin_date: 2017-10-12,
-    # end_date: ,
-    dollar_value: 2,
-    type_of_job: "Walk the dog",
-    status: "posted",
-    recurring: "yes",
-    pet_location: "owner's home",
-    # expiration_date: 2017-10-09,
-  },
-  {
-    title: "Seeking a dog pack for my dog to join in on weekend",
-    description: "Any one has more than one dog? I want my puppy to have a
-                  social life with a pack of dogs. Prefer a pack of minimum 3
-                  dogs.",
-    location: "San Jose",
-    # begin_date: 2017-10-21,
-    # end_date: ,
-    dollar_value: 3,
-    type_of_job: "Dog pack",
-    status: "posted",
-    recurring: "yes",
-    pet_location: "Your place",
-    # expiration_date: 2017-10-05,
-  },
-  {
-    title: "Going abroad for 4 weeks and need help on my 2 puppies",
-    description: "Looking for an experience caretaker for my poodles for 4 weeks
-                  while I'm oversea. Willing to pay high rate. Reference
-                  required.",
-    location: "San Mateo",
-    # begin_date: 2017-11-01,
-    # end_date: 2017-11-30,
-    dollar_value: 5,
-    type_of_job: "Full-time care",
-    status: "posted",
-    recurring: "no",
-    pet_location: "Caretaker's place",
-    # expiration_date: 2017-10-25,
-  },
-  {
-    title: "Walk them dogs",
-    description: "Walk the dog on weekdays",
-    location: "Sunnyvale",
-    # begin_date: 2017-10-30,
-    # end_date: 2017-12-15,
-    dollar_value: 2,
-    type_of_job: "Walk the dog",
-    status: "posted",
-    recurring: "no",
-    pet_location: "owner's home",
-    # expiration_date: 2017-10-20,
-  },
-  {
-    title: "Take care of my dog for 1 day",
-    description: "Need someone to look after my German Shepherd for a day",
-    location: "Oakland",
-    # begin_date: 2017-10-17,
-    # end_date: 2017-10-17,
-    dollar_value: 4,
-    type_of_job: "Whole day care",
-    status: "posted",
-    recurring: "no",
-    pet_location: "owner's home",
-    # expiration_date: 2017-10-05,
-  },
-  {
-    title: "Gone for a weekend",
-    description: "Seeking an experience individual who knows it all about dog.
-                  Must be very responsible. The dog has to be fed on exact time.
-                  Need a shower on both days.",
-    location: "San Francisco",
-    # begin_date: 2017-10-07,
-    # end_date: 2017-10-08,
-    dollar_value: 5,
-    type_of_job: "Comprehensive care",
-    status: "posted",
-    recurring: "no",
-    pet_location: "owner's home",
-    # expiration_date: 2017-10-01,
-  },
-  {
-    title: "Take my dog home for a day",
-    description: "Looking for someone to look after my dog for a day",
-    location: "San Leandro",
-    # begin_date: 2017-10-19,
-    # end_date: 2017-10-19,
-    dollar_value: 3,
-    type_of_job: "One day care",
-    status: "posted",
-    recurring: "no",
-    pet_location: "Your place",
-    # expiration_date: 2017-10-07,
-  },
-  {
-    title: "Shower and fur trimming",
-    description: "Looking for someone to trim the fur and shower my poodle every
-                  2-weeks. Prefer Saturday, but Sunday will do",
-    location: "San Jose",
-    # begin_date: 2017-10-21,
-    # end_date: 2018-10-21,
-    dollar_value: 6,
-    type_of_job: "Grooming",
-    status: "posted",
-    recurring: "no",
-    pet_location: "owner's home",
-    # expiration_date: 2017-10-10,
-  },
-])
+user_2 = User.create({
+  first_name: "Ashley",
+  last_name: "Sparks",
+  about_me: "DOGS ARE THE BEST",
+  address: "1230 Grant Ave",
+  city: "San Francisco",
+  state: "CA",
+  zip: "94133",
+  email: "asparks@unkown.com",
+  password: "pizzaa",
+  image: "http://www.curiositytravels.org/wp-content/uploads/2015/12/IMG_6425.jpg",
+})
+
+user_3 = User.create({
+  first_name: "Janet",
+  last_name: "Sparks",
+  about_me: "MY DOG IS MY BEST FRIEND",
+  address: "39 New Montgomery St",
+  city: "San Francisco",
+  state: "CA",
+  zip: "94105",
+  email: "jsparks@unkown.com",
+  password: "pizzaa",
+  image: "http://www.curiositytravels.org/wp-content/uploads/2015/12/IMG_6425.jpg",
+})
+
+pet_1 = Pet.create({
+  name: "Fido",
+  breed: "Yorkie",
+  age: "10",
+  user_id: user_1.id,
+  image: 'https://www.petfinder.com/wp-content/uploads/2013/05/120251710-632x3531-253x253.jpg',
+  about_me: 'They call me FIDO!',
+})
+
+pet_2 = Pet.create({
+  name: "Mini",
+  breed: "Yorkie",
+  age: "2",
+  user_id: user_1.id,
+  image: 'https://www.petfinder.com/wp-content/uploads/2012/11/253x190-e1352928841572.jpg',
+  about_me: 'They call me MINI!!',
+})
+
+pet_3 = Pet.create({
+  name: "Pookie",
+  breed: "Golden",
+  age: "2",
+  user_id: user_1.id,
+  image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScvdABaCG-KYPgBh7ZrwNjWf3Q-FmgfI1WF8-WSTW_qYJ1j9kh',
+  about_me: 'I am a 2 year old awesome golden!',
+})
+
+pet_4 = Pet.create({
+  name: "Peanut",
+  breed: "Golden",
+  age: "2",
+  user_id: user_1.id,
+  image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVmAH_6jaZB1TKuxWwqDMWZ3pelBzQ-rSVuONN35HJ3x_4cqLD3Q',
+  about_me: 'They call me PEANUT BC I LIKE NUTZ!',
+})
+
+pet_5 = Pet.create({
+  name: "Cece",
+  breed: "Golden",
+  age: "2",
+  user_id: user_1.id,
+  image: 'http://photos.demandstudios.com/getty/article/148/149/87786680_XS.jpg',
+  about_me: 'They call me CECEEEE!',
+})
