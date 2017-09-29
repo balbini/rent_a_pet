@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  # NO COMMENTS!
   # B/c two one-to-many relationship with the user_ID acting as the two FKs in the jobs table we had to further specify the class name and the actual name of the FK in the jobs table
 
   has_many :posted_jobs, :class_name => "Job", :foreign_key => "owner_id", dependent: :destroy
@@ -14,6 +15,7 @@ class User < ApplicationRecord
   :lockable
 
   # use email address to make slug unique
+  # INCLUDE FriendlyId AT TOP OF CLASS
   include FriendlyId
   friendly_id :first_name_and_last_name, use: [:finders, :slugged]
   # creation of the friendly_id for the urls

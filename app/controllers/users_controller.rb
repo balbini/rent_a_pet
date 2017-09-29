@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show]
   before_action :find_user, only: [:edit, :show, :update]
-
+  # NO COMMENTS/ UNNECESSARY NEWLINES
 
   def show
     # load all that users pets
