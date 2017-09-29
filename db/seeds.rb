@@ -10,6 +10,7 @@ user_1 = User.create({
   zip: "94108",
   email: "csparks@unkown.com",
   password: "pizzaa",
+  image: "http://www.boostinspiration.com/wp-content/uploads/2010/09/BlackAndWhitePhotographyPeople1.jpg",
 })
 
 user_2 = User.create({
@@ -22,6 +23,7 @@ user_2 = User.create({
   zip: "94133",
   email: "asparks@unkown.com",
   password: "pizzaa",
+  image: "http://www.curiositytravels.org/wp-content/uploads/2015/12/IMG_6425.jpg",
 })
 
 user_3 = User.create({
@@ -34,4 +36,5 @@ user_3 = User.create({
   zip: "94105",
   email: "jsparks@unkown.com",
   password: "pizzaa",
+  image: "http://www.curiositytravels.org/wp-content/uploads/2015/12/IMG_6425.jpg",
 })

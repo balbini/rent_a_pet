@@ -1,3 +1,8 @@
 
-<h4><%= @user.first_name.upcase %></h4>
+<%= @user.first_name.upcase %> <br>
+<%= @user.last_name.upcase %>
+<%= @user.about_me %>
+<%= @user.city %>
+<%= image_tag(@user.image) class:'profile-image'%>
+
 <b>Date Joined: </b><%= @user.created_at.strftime("%B").to_s + " " + @user.created_at.year.to_s %></p>
