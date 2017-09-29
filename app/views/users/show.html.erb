@@ -34,6 +34,7 @@
           <%= link_to edit_pet_path(pet.id) do %>
             <i class="material-icons">edit</i>
           <% end %>
+            <%= link_to material_icon.delete, method: :delete %>
         </div>
         <div>
           <b>Name: </b><%= pet.name %> <br>
