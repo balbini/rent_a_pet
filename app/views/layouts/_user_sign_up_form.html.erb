@@ -15,7 +15,7 @@
 
 <div class="field">
   <%= f.label :about_me %><br />
-  <%= f.text_area :about_me %>
+  <%= f.text_area :about_me, placeholder: "Tell everyone about yourself! How many pets do you have?" %>
 </div>
 
 <div class="field">
@@ -36,21 +36,4 @@
 <div class="field">
   <%= f.label :zip %><br />
   <%= f.text_field :zip %>
-</div>
-
-<div class="field">
-  <%= f.label :password %>
-  <% if @minimum_password_length %>
-  <em>(<%= @minimum_password_length %> characters minimum)</em>
-  <% end %><br />
-  <%= f.password_field :password, autocomplete: "off" %>
-</div>
-
-<div class="field">
-  <%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation, autocomplete: "off" %>
-</div>
-
-<div class="actions">
-  <%= f.submit "Sign up", class: "btn" %>
 </div>

@@ -6,9 +6,7 @@ Rails.application.routes.draw do
 
   resources :jobs
   resources :pets
-
+  resources :users, param: :slug
 
   get '/secret', to: 'jobs#secret', as: :secret
-
-  resources :users, param: :slug
 end

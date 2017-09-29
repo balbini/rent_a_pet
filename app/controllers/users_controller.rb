@@ -6,8 +6,6 @@ class UsersController < ApplicationController
   def show
   end
 
-
-
   def find_user
     @user = User.friendly.find(params[:slug])
   end
