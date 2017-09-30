@@ -4,5 +4,5 @@ class Job < ApplicationRecord
   # and we also had to specify the name of the FK. To do this we first had to create a new column in the migration with the new names of the FK and then add the reference to the FK.
   belongs_to :owner, :class_name => "User", :foreign_key => "owner_id", optional: true
   belongs_to :freelancer, :class_name => "User", :foreign_key => "freelancer_id", optional: true
-  belongs_to :pet
+  belongs_to :pet, optional: true
 end
