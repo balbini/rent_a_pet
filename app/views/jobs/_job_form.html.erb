@@ -1,20 +1,5 @@
-<div>
-  <%= f.label :title, "Name your job posting"%>
-  <%= f.text_field :title, placeholder:"Need someone petsit Rocky!"%>
-</div>
-<div>
-  <%= f.label :description, "Describe the work to be done"%>
-  <%= f.text_area :description, placeholder:"I need someone to be watch Rocky as night. Duties include: Feeding dinner, a walk around the block every 2 hours, and giving medicine."%>
-</div>
-<div>
-  <%= f.label :begin_date, "Date for the job to start"%>
-  <%= f.text_field :begin_date, class:"datepicker"%>
-</div>
-<div>
-  <%= f.label :end_date, "Date for the job to end"%>
-  <%= f.text_field :end_date, class:"datepicker"%>
-</div>
-<div>
-  <%= f.label :city, "Location of job"%>
-  <%= f.text_field :city, placeholder:"San Francisco"%>
-</div>
+
+
+  <% current_user.pets.each do |pet| %>
+  <%= pet.name %>
+  <% end %>
