@@ -15,6 +15,10 @@
         <b>Location: </b><%= @user.city %> <br>
         <b>Date Joined: </b><%= @user.created_at.strftime("%B").to_s + " " + @user.created_at.year.to_s %></p>
     </div>
+    <div class="center-align">
+  <p><%= link_to 'Add Pet', new_pet_path, class: 'btn btn-lg' %>
+  </p>
+  </div>
   </div>
 </div>
 <!-- end profile -->
@@ -25,22 +29,25 @@
 </div>
 
   <div class="container">
-      <div class="col s12 m6" style="border: red solid 2px">
-        <% @pets.each do |pet| %>
+    <div class="col s12 m6" style="border: red solid 2px">
+      <% @pets.each do |pet| %>
+        <% if !pet.image.nil? %>
           <%= image_tag(pet.image, class:'prof-image')%>
-          <div class='right-align'>
-            <%= link_to edit_pet_path(pet.id) do %>
-              <i class="material-icons">edit</i>
-            <% end %>
-          </div>
-          <div>
-            <b>Name: </b><%= pet.name %> <br>
-            <b>About <%= pet.name %>: </b><%= pet.about_me %> <br>
-            <b>Age: </b><%= pet.age %> <br>
-            <b>Breed: </b><%= pet.breed %> <br>
-          </div>
         <% end %>
-      </div>
+        <div class='right-align'>
+          <%= link_to edit_pet_path(pet.id) do %>
+            <i class="material-icons">edit</i>
+          <% end %>
+            <%= link_to material_icon.delete, method: :delete %>
+        </div>
+        <div>
+          <b>Name: </b><%= pet.name %> <br>
+          <b>About <%= pet.name %>: </b><%= pet.about_me %> <br>
+          <b>Age: </b><%= pet.age %> <br>
+          <b>Breed: </b><%= pet.breed %> <br>
+        </div>
+      <% end %>
+    </div>
   </div>
 
 
