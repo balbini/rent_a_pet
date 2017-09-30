@@ -1,3 +1,29 @@
 // Place all the styles related to the pets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.pet-class, .job-class{
+  border: 1px solid grey;
+  border-radius: 8px;
+}
+
+.pet-image {
+  border: 4px solid #bf8040;
+  border-radius: 6px;
+  border-style: outset;
+  width: 98%;
+  margin: 5% 1%;
+}
+
+.pet-info-wrapper {
+  padding: 0% 2% 0% 2%;
+}
+
+.job-info-wrapper {
+  padding: 0% 4% 0% 4%;
+}
+
+.pet-info-class, .job-info-class{
+  border: 1px solid grey;
+  border-radius: 4px;
+  // margin: 5% 5% 5% 5%;
+}
