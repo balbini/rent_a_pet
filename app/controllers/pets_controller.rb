@@ -29,8 +29,10 @@ class PetsController < ApplicationController
     redirect_to user_path(current_user.slug)
   end
 
-  def delete
+  def destroy
+    @pet = Pet.find_by_id(params[:id])
     @pet.destroy
+    redirect_to user_path(current_user.slug)
   end
 
   private
