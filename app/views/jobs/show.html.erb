@@ -9,8 +9,8 @@
         <p><strong>City: </strong> <%= @job.city %> </p>
         <p><strong>State: </strong> <%= @job.state %> </p>
         <p><strong>Zip: </strong> <%= @job.zip %> </p>
-        <p><strong>Begin Date: </strong> <%= @job.begin_date %> </p>
-        <p><strong>End Date: </strong> <%= @job.end_date %> </p>
+        <p><strong>Begin Date: </strong>  <%= @job.begin_date.strftime("%B").to_s + " " + @job.begin_date.day.to_s + "," + @job.begin_date.year.to_s %></p>
+        <p><strong>End Date: </strong> <%= @job.end_date.strftime("%B").to_s + " " + @job.end_date.day.to_s + "," + @job.end_date.year.to_s %></p>
         <p><strong>Dollar Value: </strong> <%= @job.dollar_value %> </p>
         <p><strong>Type of Job: </strong> <%= @job.type_of_job %> </p>
         <p><strong>Status: </strong> <%= @job.status %> </p>
@@ -19,7 +19,8 @@
         <p><strong>Expiration Date: </strong> <%= @job.expiration_date %> </p>
         <p><strong>Job Owner: </strong> <%= @job.owner.first_name %> <%= @job.owner.last_name %> </p>
         <p><strong>Name of pet: </strong> <%= @job.pet.name %>
-
+        <%= link_to "Update Job", edit_job_path(@job.id), class:"btn"%>
+        <%= button_to 'Delete', {:controller => "jobs", :action => 'destroy', :id => @job.id}, data: {:confirm => "Are you sure you want to delete the #{@job.title} job?"}, :method => :delete, class: 'btn' %>
     </div>
   </div>
 </div>

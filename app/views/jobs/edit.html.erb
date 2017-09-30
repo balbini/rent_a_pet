@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12" style="border: red solid 2px">
+      <h1>Create a new job</h1>
+        <%= form_for @job do |f| %>
+          <%= render partial: "job_form", locals: { f: f } %>
+          <%= hidden_field(:job, :status, :value => 'Open' ) %>
+          <%= f.label :status, "Status of Job"%>
+          <% if @job.status == 'Open' %>
+            <%= f.select :status, options_for_select(["Open", "Inprogress", "Closed"]) %>
+          <% elsif @job.status == 'Inprogress' %>
+            <%= f.select :status, options_for_select(["Inprogress", "Open", "Closed"]) %>
+          <% else %>
+            <%= f.select :status, options_for_select(["Closed", "Open", "Inprogress"]) %>
+          <% end %>
+          <%= f.submit "Post Job", class: "btn" %>
+        <% end %>
+    </div>
+  </div>
+</div>
