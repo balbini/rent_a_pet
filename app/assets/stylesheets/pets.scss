@@ -1,7 +1,4 @@
-// Place all the styles related to the pets controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-.pet-class, .job-class{
+.pet-class {
   border: 1px solid grey;
   border-radius: 8px;
 }
@@ -18,12 +15,7 @@
   padding: 0% 2% 0% 2%;
 }
 
-.job-info-wrapper {
-  padding: 0% 4% 0% 4%;
-}
-
-.pet-info-class, .job-info-class{
+.pet-info-class {
   border: 1px solid grey;
   border-radius: 4px;
-  // margin: 5% 5% 5% 5%;
 }
