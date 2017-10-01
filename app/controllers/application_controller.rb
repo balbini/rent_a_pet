@@ -9,10 +9,4 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :about_me, :address, :city, :state, :zip ])
   end
 
-  def check_owner
-    if current_user != @user
-      redirect_to root_path
-    end
-  end
-
 end

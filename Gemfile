@@ -63,3 +63,5 @@ gem 'ffaker'
 gem 'friendly_id'
 
 gem 'kaminari'
+
+gem 'bootstrap-datepicker-rails'
