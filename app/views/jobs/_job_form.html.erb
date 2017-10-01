@@ -1,5 +1,31 @@
+<div>
+  <%= f.label :title, "Name your job posting"%>
+  <%= f.text_field :title, placeholder:"Need someone to watch Rocky!"%>
+</div>
+<div>
+  <%= f.label :description, "Describe the work to be done"%>
+  <%= f.text_field :description, placeholder:"I need someone to be watch Rocky as night. Duties include: Feeding dinner, a walk around the block every 2 hours, and giving medicine."%>
+</div>
+<% if @job.begin_date.nil? || @job.end_date.nil? %>
+  <div>
+    <%= f.label :begin_date, "Date for the job to start"%>
+    <%= f.date_field :begin_date, :value => Date.today, min: Date.today %>
+  </div>
+<% else %>
+  <div>
+    <%= f.label :begin_date, "Date for the job to start"%>
+    <%= f.date_field :begin_date, min: Date.today%>
+  </div>
+<% end %>
+<div>
+  <%= f.label :end_date, "Date for the job to end"%>
+  <%= f.date_field :end_date, min: Date.today %>
+</div>
 
-
-  <% current_user.pets.each do |pet| %>
-  <%= pet.name %>
-  <% end %>
+<div>
+  <%= f.label :city, "Location of job"%>
+  <%= f.text_field :city, :value => current_user.city %>
+</div>
+  <%= f.label :pet_id, "Name of pet"%>
+  <%= f.select :pet_id, current_user.pets.all.collect { |p| [ p.name, p.id ] }%>
+  <%= hidden_field(:job, :owner_id, :value => current_user.id ) %>
