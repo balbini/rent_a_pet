@@ -17,12 +17,28 @@ class JobsController < ApplicationController
     if @job.save
       redirect_to job_path(@job)
     else
-      flash[:error] = "Your pet was not saved!"
+      flash[:error] = "Your job was not saved!"
     end
+  end
+
+  def edit
+    @job = Job.find_by_id(params[:id])
+  end
+
+  def update
+      @job = Job.find_by_id(params[:id])
+      @job.update(job_params)
+      redirect_to user_path(current_user.slug)
   end
 
   def find_job
     @job = Job.find_by_id(params[:id])
+  end
+
+  def destroy
+    @job = Job.find_by_id(params[:id])
+    @job.destroy
+    redirect_to user_path(current_user.slug)
   end
 
 
@@ -30,24 +46,6 @@ class JobsController < ApplicationController
   def job_params
     params.require(:job).permit(:title, :description, :owner_id, :city, :pet_id, :begin_date, :end_date)
   end
-    # t.string "title"
-    # t.string "description"
-    # t.string "zip"
-    # t.date "begin_date"
-    # t.date "end_date"
-    # t.integer "dollar_value"
-    # t.string "type_of_job"
-    # t.string "status"
-    # t.string "recurring"
-    # t.string "pet_location"
-    # t.date "expiration_date"
-    # t.datetime "created_at", null: false
-    # t.datetime "updated_at", null: false
-    # t.string "address"
-    # t.string "city"
-    # t.string "state"
-    # t.integer "owner_id"
-    # t.integer "freelancer_id"
-    # t.bigint "pet_id"
+
 
 end

@@ -18,6 +18,8 @@
     <div class="center-align">
   <p><%= link_to 'Add Pet', new_pet_path, class: 'btn btn-lg' %>
   </p>
+  <p><%= link_to 'Add Job', new_job_path, class: 'btn btn-lg' %>
+  </p>
   </div>
   </div>
 </div>
@@ -58,6 +60,7 @@
               <%= link_to edit_job_path(posted_job.id) do %>
                 <i class="material-icons">edit</i>
               <% end %>
+                <%= link_to material_icon.delete, posted_job, :url => "/jobs/#{posted_job.id}", method: :delete %>
             </div>
             <div>
               <p><strong>Title: </strong> <%= posted_job.title %> </p>
