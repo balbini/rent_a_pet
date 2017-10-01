@@ -34,9 +34,13 @@ body {
   background: #e3f2fd;
 }
 
+.container > .row > h5 {
+  color: #0080ff;
+}
+
 .show {
   display: none;
-  color: blue;
+  color: #66b3ff;
   text-align: right;
 }
 
