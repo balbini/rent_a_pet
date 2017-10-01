@@ -49,23 +49,25 @@ Pet.create([
     name: "Fido",
     breed: "Yorkie",
     age: "10",
-    user: User.all.sample,
+    user: User.first,
     image: 'https://www.petfinder.com/wp-content/uploads/2013/05/120251710-632x3531-253x253.jpg',
     about_me: 'They call me FIDO!',
   },
   {
-    name: "Mini",
-    breed: "Yorkie",
+    name: "Mini askjdhfaksdjfh",
+    breed: "Yorkie askdjfhaklsdjf",
     age: "2",
-    user: User.all.sample,
+    user: User.first,
     image: 'https://www.petfinder.com/wp-content/uploads/2012/11/253x190-e1352928841572.jpg',
-    about_me: 'They call me MINI!!',
+    about_me: 'They call me MINI!! as;ldkfja;ds adsfkadf adfasdfasdf adf af sadf
+               asdfjkal;sdf asdfa asdf asdf asdf asd arg asdf asdf asdf asdfa sadf
+               alskdflakdf;laskdf asdf asdfads gasdlkfjkasd vadslfknad',
   },
   {
     name: "Pookie",
     breed: "Golden",
     age: "2",
-    user: User.all.sample,
+    user: User.first,
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScvdABaCG-KYPgBh7ZrwNjWf3Q-FmgfI1WF8-WSTW_qYJ1j9kh',
     about_me: 'I am a 2 year old awesome golden!',
   },
@@ -73,7 +75,7 @@ Pet.create([
     name: "Peanut",
     breed: "Golden",
     age: "2",
-    user: User.all.sample,
+    user: User.first,
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVmAH_6jaZB1TKuxWwqDMWZ3pelBzQ-rSVuONN35HJ3x_4cqLD3Q',
     about_me: 'They call me PEANUT BC I LIKE NUTZ!',
   },
@@ -81,7 +83,7 @@ Pet.create([
     name: "Cece",
     breed: "Golden",
     age: "2",
-    user: User.all.sample,
+    user: User.first,
     image: 'http://photos.demandstudios.com/getty/article/148/149/87786680_XS.jpg',
     about_me: 'They call me CECEEEE!',
   },
@@ -90,77 +92,77 @@ Pet.create([
     breed: "German Shepherd",
     age: 2,
     image: "german_shepherd.jpeg",
-    user: User.all.sample,
+    user: User.first,
   },
   {
     name: "Sagget",
     breed: "Labrador",
     age: 1,
     image: "labrador.jpeg",
-    user: User.all.sample,
+    user: User.second,
   },
   {
     name: "Jimbo",
     breed: "Rottweiler",
     age: 3,
     image: "rottweiler.jpeg",
-    user: User.all.sample,
+    user: User.second,
   },
   {
     name: "Sammy",
     breed: "Beagle",
     age: 4,
     image: "beagle.jpeg",
-    user: User.all.sample,
+    user: User.second,
   },
   {
     name: "Joey",
     breed: "Bulldog",
     age: 3,
     image: "bulldog.jpeg",
-    user: User.all.sample,
+    user: User.second,
   },
   {
     name: "Roney",
     breed: "Golden Retriever",
     age: 2,
     image: "golden_retriever.jpeg",
-    user: User.all.sample,
+    user: User.second,
   },
   {
     name: "Tim",
     breed: "Great Dane",
     age: 2,
     image: "great_dane.jpeg",
-    user: User.all.sample,
+    user: User.third,
   },
   {
     name: "Tommy",
     breed: "Poodle",
     age: 5,
     image: "poodle.jpeg",
-    user: User.all.sample,
+    user: User.third,
   },
   {
     name: "Dax",
     breed: "Doberman Pinscher",
     age: 2,
     image: "doberman_pinscher.jpeg",
-    user: User.all.sample,
+    user: User.third,
   },
   {
     name: "Bobby",
     breed: "Dachshund",
     age: 3,
     image: "dachshund.jpeg",
-    user: User.all.sample,
+    user: User.third,
   },
   {
     name: "Yar",
     breed: "Siberian Husky",
     age: 2,
     image: "siberian_husky.jpeg",
-    user: User.all.sample,
+    user: User.third,
   },
 ])
 
@@ -306,7 +308,16 @@ Job.create([
   },
   {
     title: "Take care of my dog for 1 day",
-    description: "Need someone to look after my German Shepherd for a day",
+    description: "Need someone to look after my German Shepherd for a day.
+                  sldkfjad asdofiasdf adf ag tadeg asdf asdfasdfaedgt asdae
+                  asdfasdf adsfa sdgasd fawef aerfa sd asdfad zsdfasdfasdf
+                  asdfoiaegrf asdo;ifn eaodifa asdoifhaiouf aosiudfnasduf
+                  sldkfjad asdofiasdf adf ag tadeg asdf asdfasdfaedgt asdae
+                  asdfasdf adsfa sdgasd fawef aerfa sd asdfad zsdfasdfasdf
+                  asdfoiaegrf asdo;ifn eaodifa asdoifhaiouf aosiudfnasduf
+                  sldkfjad asdofiasdf adf ag tadeg asdf asdfasdfaedgt asdae
+                  asdfasdf adsfa sdgasd fawef aerfa sd asdfad zsdfasdfasdf
+                  asdfoiaegrf asdo;ifn eaodifa asdoifhaiouf aosiudfnasduf",
     address: "1211 Amherst Ct",
     city: "San Leandro",
     state: "CA",
@@ -361,7 +372,7 @@ Job.create([
     expiration_date: "2017-10-07",
     owner: User.second,
     pet: User.second.pets.sample,
-    freelancer: User.third,
+    freelancer: User.first,
   },
   {
     title: "Shower and fur trimming",
@@ -379,8 +390,8 @@ Job.create([
     recurring: "no",
     pet_location: "owner's home",
     expiration_date: "2017-10-10",
-    owner: User.third,
-    pet: User.third.pets.sample,
-    freelancer: User.second,
+    owner: User.first,
+    pet: User.first.pets.sample,
+    freelancer: User.third,
   },
 ])
