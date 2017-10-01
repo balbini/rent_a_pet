@@ -15,11 +15,10 @@
         <p><strong>State: </strong> <%= @job.state %> </p>
         <hr>
         <p><strong>Zip: </strong> <%= @job.zip %> </p>
-        <hr>
-        <p><strong>Begin Date: </strong> <%= @job.begin_date %> </p>
-        <hr>
-        <p><strong>End Date: </strong> <%= @job.end_date %> </p>
-        <hr>
+        <p><strong>Begin Date: </strong>  <%= @job.begin_date.strftime("%B").to_s + " " + @job.begin_date.day.to_s + "," + @job.begin_date.year.to_s %></p>
+        <p><strong>End Date: </strong> <%= @job.end_date.strftime("%B").to_s + " " + @job.end_date.day.to_s + "," + @job.end_date.year.to_s %></p>
+        <p><strong>Begin Date: </strong>  <%= @job.begin_date.strftime("%B").to_s + " " + @job.begin_date.day.to_s + "," + @job.begin_date.year.to_s %></p>
+        <p><strong>Job Posted Date: </strong> <%= @job.created_at.strftime("%B").to_s + " " + @job.created_at.day.to_s + "," + @job.created_at.year.to_s %></p>
         <p><strong>Dollar Value: </strong> <%= @job.dollar_value %> </p>
         <hr>
         <p><strong>Type of Job: </strong> <%= @job.type_of_job %> </p>
@@ -35,8 +34,16 @@
         <p><strong>Job Owner: </strong> <%= @job.owner.first_name %> <%= @job.owner.last_name %> </p>
         <hr>
         <p><strong>Name of pet: </strong> <%= @job.pet.name %>
-        <hr>
-      <% end %>
+        <p><strong>Pet Image: </strong> <%= image_tag(@job.pet.image) %>
+
+        <% if check_if_job_is_saved_to_db_by_freelancer == false %>
+          <p><strong>Freelancer Info: </strong> <%= @job.freelancer.first_name %> <%= @job.freelancer.last_name %> </p>
+        <% end %>
+
+        <% if check_if_job_is_owners == true %>
+          <%= link_to "Update Job", edit_job_path(@job.id), class:"btn"%>
+          <%= button_to 'Delete', {:controller => "jobs", :action => 'destroy', :id => @job.id}, data: {:confirm => "Are you sure you want to delete the #{@job.title} job?"}, :method => :delete, class: 'btn' %>
+        <% end %>
     </div>
   </div>
 </div>

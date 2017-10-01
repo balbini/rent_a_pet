@@ -41,6 +41,8 @@ GEM
     arel (8.0.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bootstrap-datepicker-rails (1.7.1.1)
+      railties (>= 3.0)
     builder (3.2.3)
     byebug (9.1.0)
     coffee-rails (4.2.2)
@@ -194,6 +196,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-datepicker-rails
   byebug
   coffee-rails (~> 4.2)
   devise

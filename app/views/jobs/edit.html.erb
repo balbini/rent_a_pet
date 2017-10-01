@@ -1,34 +1,35 @@
 <div class="container">
   <div class="row">
     <div class="col s12" style="border: red solid 2px">
-      <h1>Edit a Job</h1>
-      <%= form_for @job do |f| %>
-      <div>
-        <%= f.label :title, "Name your job posting"%>
-        <%= f.text_field :title, placeholder:"Need someone petsit Rocky!"%>
-      </div>
-      <div>
-        <%= f.label :description, "Describe the work to be done"%>
-        <%= f.text_field :description, placeholder:"I need someone to be watch Rocky as night. Duties include: Feeding dinner, a walk around the block every 2 hours, and giving medicine."%>
-      </div>
-      <div>
-        <%= f.label :begin_date, "Date for the job to start"%>
-        <%= f.text_field :begin_date, class:"datepicker"%>
-      </div>
-      <div>
-        <%= f.label :end_date, "Date for the job to end"%>
-        <%= f.text_field :end_date, class:"datepicker"%>
-      </div>
-      <div>
-        <%= f.label :city, "Location of job"%>
-        <%= f.text_field :city, :value => current_user.city %>
-      </div>
-        <%= f.label :pet_id, "Name of pet"%>
-        <%= f.select :pet_id, current_user.pets.all.collect { |p| [ p.name, p.id ] }%>
-
-        <%= hidden_field(:job, :owner_id, :value => current_user.id ) %>
-        <%= f.submit "Post Job", class: "btn" %>
+      <% if check_if_job_is_owners == true %>
+        <h1>Hey, <%= @job.owner.first_name %>! Weclome back to your job posting</h1>
+        <p>Please update your job!</p>
+        <%= form_for @job do |f| %>
+          <%= render partial: "job_form", locals: { f: f } %>
+          <%= hidden_field(:job, :status, :value => 'Open' ) %>
+          <%= f.label :status, "Status of Job"%>
+          <%= render partial: "job_status_drop_down", locals: { f: f } %>
+          <%= f.submit "Update Job", class: "btn" %>
+        <% end %>
+      <% elsif check_if_job_is_saved_to_db_by_freelancer == false %>
+        <h1>If you want to work on this job, change update the status below!</h1>
+        <%= form_for @job do |f| %>
+          <%= f.label :status, "Status of Job"%>
+          <%= render partial: "job_status_drop_down", locals: { f: f } %>
+          <%= hidden_field(:job, :freelancer_id, :value => current_user.id ) %>
+          <%= f.submit "Update Status", class: "btn" %>
+        <% end %>
+      <% elsif check_if_job_is_freelancers == true %>
+          <h1>Hey, <%= @job.freelancer.first_name %>! Update the status of the job.</h1>
+          <%= form_for @job do |f| %>
+            <%= f.label :status, "Status of Job"%>
+            <%= render partial: "job_status_drop_down", locals: { f: f } %>
+            <%= hidden_field(:job, :freelancer_id, :value => current_user.id ) %>
+            <%= f.submit "Update Status", class: "btn" %>
+          <% end %>
       <% end %>
+
+
     </div>
   </div>
 </div>

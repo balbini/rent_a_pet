@@ -63,6 +63,12 @@
                 <%= link_to material_icon.delete, posted_job, :url => "/jobs/#{posted_job.id}", method: :delete %>
             </div>
             <div>
+              <p><strong>posted_job.owner.id: </strong> <%= posted_job.owner.id %> </p>
+              <p><strong>posted_job.owner.id: </strong> <%= posted_job.owner.first_name %> </p>
+            <% if posted_job.freelancer.nil? %>
+            <% else %>
+              <p><strong>posted_job.freelancer.id: </strong> <%= posted_job.freelancer.id %> </p>
+            <% end %>
               <p><strong>Title: </strong> <%= posted_job.title %> </p>
               <p><strong>Description: </strong> <%= posted_job.description %> </p>
               <p><strong>Address: </strong> <%= posted_job.address %> </p>
@@ -96,6 +102,12 @@
             <% end %>
           </div>
           <div>
+            <p><strong>working_job.owner.id: </strong> <%= working_job.owner.id %> </p>
+            <p><strong>working_job.owner.id: </strong> <%= working_job.owner.first_name %> </p>
+          <% if working_job.freelancer.nil? %>
+          <% else %>
+            <p><strong>working_job.freelancer.id: </strong> <%= working_job.freelancer.id %> </p>
+          <% end %>
             <p><strong>Title: </strong> <%= working_job.title %> </p>
             <p><strong>Description: </strong> <%= working_job.description %> </p>
             <p><strong>Address: </strong> <%= working_job.address %> </p>
