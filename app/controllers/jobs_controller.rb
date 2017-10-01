@@ -3,9 +3,16 @@ class JobsController < ApplicationController
   before_action :find_job, only: [:edit, :show, :update]
 
   def index
+    @job = Job.all
+    @jobs = if params[:location]
+      Job.where("name LIKE ?", "%#{params[:location]}%")
+    else
+      Job.all
+    end
   end
 
   def show
+    @job = Job.all
   end
 
   def new

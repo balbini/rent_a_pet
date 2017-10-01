@@ -16,12 +16,12 @@
     <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
-        <div class="brand-logo right">
+        <div class="brand-logo">
           <%= link_to 'PetWork', root_path %>
         </div>
         <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu
         </i></a>
-          <ul class="left hide-on-med-and-down">
+          <ul class="right hide-on-med-and-down">
             <li><%= link_to 'Home', root_path %></li>
             <% if user_signed_in? %>
                   <li><%= link_to 'Profile', edit_user_registration_path %></li>
@@ -31,8 +31,8 @@
               <li><%= link_to 'Sign Up', new_user_registration_path %></li>
             <% end %>
           </ul>
-          <ul class="right side-nav" id="mobile-demo">
-            <li><%= link_to 'Home', root_path %>Home</li>
+          <ul class="side-nav" id="mobile-demo">
+            <li><%= link_to 'Home', root_path %></li>
             <% if user_signed_in? %>
                   <li><%= link_to 'Profile', edit_user_registration_path %></li>
                   <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>

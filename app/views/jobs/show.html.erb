@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col s12">
+      <% @jobs.each do |pet| %>
         <h1> <%= @job.title %> </h1>
         <hr>
         <p><strong>ID: </strong> <%= @job.id %> </p>
@@ -35,6 +36,7 @@
         <hr>
         <p><strong>Name of pet: </strong> <%= @job.pet.name %>
         <hr>
+      <% end %>
     </div>
   </div>
 </div>
