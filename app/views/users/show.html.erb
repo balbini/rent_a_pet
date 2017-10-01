@@ -116,12 +116,18 @@
               <div class="col s6 m4">
                 <b>City: </b> <%= posted_job.city %>
               </div>
+
               <div class="col s6 m8">
-                <b>Status: </b> <%= posted_job.status %>
+                <b>Status: </b>
+                <span class="title job-status"> <%= posted_job.status %></span>
+                <i class="material-icons circle job-status
+                  <%= posted_job.status == "posted" ? "red" :
+                      posted_job.status == "in progress" ? "yellow" :
+                      posted_job.status == "completed" ? "green" : ""%>
+                  ">panorama_fish_eye</i>
               </div>
             </div>
           </div>
-
 
           <div class="col s12 m12">
             <b>Description: </b> <%= posted_job.description %>
@@ -180,9 +186,17 @@
               <div class="col s6 m4">
                 <b>City: </b> <%= working_job.city %>
               </div>
+
               <div class="col s6 m8">
-                <b>Status: </b> <%= working_job.status %>
+                <b>Status: </b>
+                <span class="title job-status"> <%= working_job.status %></span>
+                <i class="material-icons circle job-status
+                  <%= working_job.status == "posted" ? "red" :
+                      working_job.status == "in progress" ? "yellow" :
+                      working_job.status == "completed" ? "green" : ""%>
+                  ">panorama_fish_eye</i>
               </div>
+
             </div>
           </div>
 
