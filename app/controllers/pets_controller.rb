@@ -20,7 +20,7 @@ class PetsController < ApplicationController
   end
 
   def edit
-    @pet = Pet.find_by_id(params[:id])
+      @pet = Pet.find_by_id(params[:id])
   end
 
   def update
@@ -29,8 +29,18 @@ class PetsController < ApplicationController
     redirect_to user_path(current_user.slug)
   end
 
-  def delete
+  def destroy
+    @pet = Pet.find_by_id(params[:id])
     @pet.destroy
+    redirect_to user_path(current_user.slug)
+  end
+
+  def user_check
+    if current_user.id.to_s == @pet.user_id.to_s
+      true
+    else
+      false
+    end
   end
 
   private
@@ -38,6 +48,7 @@ class PetsController < ApplicationController
   def pet_params
     params.require(:pet).permit(:name, :breed, :age, :image, :about_me, :user_id)
   end
+
 
 
 end

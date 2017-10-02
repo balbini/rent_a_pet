@@ -29,8 +29,11 @@
       </div>
     </div>
     <div class="center-align">
-  <p><%= link_to 'Add Pet', new_pet_path, class: 'btn btn-lg' %>
-  </p>
+        <p><%= link_to 'Add Pet', new_pet_path, class: 'btn btn-lg' %>
+        </p>
+        <p><%= link_to 'Add Job', new_job_path, class: 'btn btn-lg' %>
+        </p>
+      </div>
   </div>
   </div>
 </div>
@@ -57,6 +60,8 @@
               <%= link_to edit_pet_path(pet.id) do %>
                 <i class="material-icons">edit</i>
               <% end %>
+                <%= link_to material_icon.delete, posted_job, :url => "/jobs/#{posted_job.id}", method: :delete %>
+                <%= link_to material_icon.delete, pet, :url => "/pets/#{pet.id}", method: :delete %>
             </div>
 
             <div class="pet-info-wrapper">

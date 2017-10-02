@@ -17,7 +17,7 @@ class JobsController < ApplicationController
       @jobs = []
     end
   end
-  
+
   # def autocomplete
   #   render json: Job.search(params[:query], autocomplete: false, limit: 10).map    do |job|
   #     {
@@ -33,6 +33,7 @@ class JobsController < ApplicationController
   # end
 
   def show
+    @job = Job.all
   end
 
   def show_all_jobs
@@ -124,6 +125,16 @@ class JobsController < ApplicationController
       flash[:error] = "Sorry! Only the owner can delete the job"
       redirect_to job_path(@job.id)
     end
+  end
+
+  def edit
+    @job = Job.find_by_id(params[:id])
+  end
+
+  def update
+      @job = Job.find_by_id(params[:id])
+      @job.update(job_params)
+      redirect_to user_path(current_user.slug)
   end
 
   def find_job
