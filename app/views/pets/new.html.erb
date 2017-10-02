@@ -1,0 +1,31 @@
+<div class="container">
+  <%= form_for @pet do |f| %>
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :breed %><br />
+      <%= f.text_field :breed %>
+    </div>
+
+    <div class="field">
+      <%= f.label :age %><br />
+      <%= f.text_field :age %>
+    </div>
+
+    <div class="field">
+      <%= f.label :image %><br />
+      <%= f.text_field :image %>
+    </div>
+
+    <div class="field">
+      <%= f.label :about_me %><br />
+      <%= f.text_field :about_me %>
+    </div>
+
+    <%= hidden_field(:pet, :user_id, :value => current_user.id ) %>
+    <%= f.submit "Add Pet" %>
+  <% end %>
+</div>

@@ -13,6 +13,7 @@
 
   <body>
     <!-- NAV Bar START -->
+    <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
         <div class="brand-logo right">
@@ -23,7 +24,7 @@
           <ul class="left hide-on-med-and-down">
             <li><%= link_to 'Home', root_path %></li>
             <% if user_signed_in? %>
-                  <li><%= link_to 'Profile', edit_user_registration_path %></li>
+                  <li><%= link_to 'Profile', user_path(current_user) %></li>
                   <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
             <% else %>
               <li><%= link_to 'Log In', new_user_session_path %></li>
@@ -42,6 +43,7 @@
           </ul>
       </div>
     </nav>
+  </div>
     <!-- NAV Bar END -->
 
 

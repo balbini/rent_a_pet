@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap-datepicker
  */
 
  @import "materialize/components/color";
@@ -32,6 +33,10 @@ h1 {
 
 body {
   background: #e3f2fd;
+}
+
+.navbar-fixed {
+  z-index: 996;
 }
 
 .container > .row > h5 {

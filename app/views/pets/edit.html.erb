@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Edit Pet</h1>
+
+  <%= form_for @pet do |f| %>
+
+    <div>
+      Name:<%= f.text_field :name %>
+    </div>
+    <div>
+      Breed:<%= f.text_area :breed %>
+    </div>
+    <div>
+      Age:<%= f.text_area :age %>
+    </div>
+    <div>
+      About Me:<%= f.text_area :about_me %>
+    </div>
+    <%= f.submit class: "btn waves-effect waves-light" %>
+  <% end %>
+</div>
