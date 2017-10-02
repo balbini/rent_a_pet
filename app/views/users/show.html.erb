@@ -1,19 +1,32 @@
 <!-- Start of Profile -->
-<div class="container">
-  <div class="row">
-    <div class="col s12 m4" style="border: red solid 2px">
-      <%= render "user_has_picture" %>
-    </div>
-    <div class="col s12 m8 prof-info" style="border: black solid 2px">
-      <div class='right-align'>
-        <%= link_to edit_user_registration_path(current_user) do %>
-          <i class="material-icons">edit</i>
-        <% end %>
+<div class="user-section">
+  <div class="container">
+    <div class="row">
+      <div class="col s4 offset-s4 m4 offset-m4">
+        <%= render "user_has_picture" %>
       </div>
-        <b>Name: </b><%= @user.first_name.upcase %> <%= @user.last_name.upcase %> <br>
+      <div class="col s12 m10 offset-m1 prof-info user-class">
+        <div class='right-align'>
+          <%= link_to edit_user_registration_path(current_user) do %>
+            <i class="material-icons">edit</i>
+          <% end %>
+        </div>
+        <div class="user-info-wrapper">
+          <div class="row user-info-class">
+            <div class="col s10 m6 l5 xl4">
+              <b>Name: </b><%= @user.first_name.upcase %> <%= @user.last_name.upcase %> <br>
+            </div>
+            <div class="col s10 m6 l5 xl4">
+              <b>Location: </b><%= @user.city %> <br>
+            </div>
+            <div class="col s10 m6 l5 xl4">
+              <b>Date Joined: </b><%= @user.created_at.strftime("%B").to_s + " " + @user.created_at.year.to_s %></p>
+            </div>
+          </div>
+        </div>
         <b>About Me: </b><%= @user.about_me %> <br>
-        <b>Location: </b><%= @user.city %> <br>
-        <b>Date Joined: </b><%= @user.created_at.strftime("%B").to_s + " " + @user.created_at.year.to_s %></p>
+
+      </div>
     </div>
     <div class="center-align">
   <p><%= link_to 'Add Pet', new_pet_path, class: 'btn btn-lg' %>
@@ -22,116 +35,203 @@
   </div>
 </div>
 <!-- end profile -->
-<div class="container">
-  <div class="col s12 m6" style="border: red solid 2px">
-    <%= link_to 'Post a job', new_job_path %>
-  </div>
-</div>
 
-  <div class="container">
-    <div class="col s12 m6" style="border: red solid 2px">
-      <% @pets.each do |pet| %>
-        <% if !pet.image.nil? %>
-          <%= image_tag(pet.image, class:'prof-image')%>
-        <% end %>
-        <div class='right-align'>
-          <%= link_to edit_pet_path(pet.id) do %>
-            <i class="material-icons">edit</i>
-          <% end %>
-            <%= link_to material_icon.delete, method: :delete %>
-        </div>
-        <div>
-          <b>Name: </b><%= pet.name %> <br>
-          <b>About <%= pet.name %>: </b><%= pet.about_me %> <br>
-          <b>Age: </b><%= pet.age %> <br>
-          <b>Breed: </b><%= pet.breed %> <br>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-
-  <!-- Start of jobs where they are the owner -->
+<div class="pet-section">
+  <% if @pets.length != 0 %>
     <div class="container">
-      <h4> My job postings </h4>
-      <% @posted_jobs.each do |posted_job| %>
-      <div class ="row">
-          <div class="col s12 m6" style="border: red solid 2px">
-            <!-- decide if we want people who are currently working on jobs to update or note and then delete or not delete -->
+      <div class="row">
+        <h5> My Pets </h5>
+      </div>
+    </div>
+
+    <div class="container pet-container">
+      <% @pets.each do |pet| %>
+
+        <div class="row pet-class">
+          <div class="col s12 m4">
+            <%= image_tag(pet.image, class:'pet-image')%>
+          </div>
+
+          <div class="col s12 m8">
             <div class='right-align'>
-              <%= link_to edit_job_path(posted_job.id) do %>
+              <%= link_to edit_pet_path(pet.id) do %>
                 <i class="material-icons">edit</i>
               <% end %>
             </div>
-            <div>
-              <p><strong>posted_job.owner.id: </strong> <%= posted_job.owner.id %> </p>
-              <p><strong>posted_job.owner.id: </strong> <%= posted_job.owner.first_name %> </p>
-            <% if posted_job.freelancer.nil? %>
-            <% else %>
-              <p><strong>posted_job.freelancer.id: </strong> <%= posted_job.freelancer.id %> </p>
-            <% end %>
-              <p><strong>Title: </strong> <%= posted_job.title %> </p>
-              <p><strong>Description: </strong> <%= posted_job.description %> </p>
-              <p><strong>Address: </strong> <%= posted_job.address %> </p>
-              <p><strong>City: </strong> <%= posted_job.city %> </p>
-              <p><strong>State: </strong> <%= posted_job.state %> </p>
-              <p><strong>Zip: </strong> <%= posted_job.zip %> </p>
-              <p><strong>Begin Date: </strong> <%= posted_job.begin_date %> </p>
-              <p><strong>End Date: </strong> <%= posted_job.end_date %> </p>
-              <p><strong>Dollar Value: </strong> <%= posted_job.dollar_value %> </p>
-              <p><strong>Type of Job: </strong> <%= posted_job.type_of_job %> </p>
-              <p><strong>Status: </strong> <%= posted_job.status %> </p>
-              <p><strong>Recurring: </strong> <%= posted_job.recurring %> </p>
-              <p><strong>Pet Location: </strong> <%= posted_job.pet_location %> </p>
-              <p><strong>Expiration Date: </strong> <%= posted_job.expiration_date %>
-            </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
 
-<!-- Start of jobs where they are the freelancer -->
-  <div class="container">
-    <h4> My jobs that I am working on </h4>
-    <% @working_jobs.each do |working_job| %>
-    <div class ="row">
-        <div class="col s12 m6" style="border: red solid 2px">
-          <!-- decide if we want people who are currently working on jobs to update or note and then delete or not delete -->
-          <div class='right-align'>
-            <%= link_to edit_job_path(working_job.id) do %>
-              <i class="material-icons">edit</i>
-            <% end %>
+            <div class="pet-info-wrapper">
+              <div class=" row pet-info-class">
+                <div class="col s12 m4 l5">
+                  <b>Name: </b><%= pet.name %>
+                </div>
+                <div class="col s12 m5 l5">
+                  <b>Breed: </b><%= pet.breed %>
+                </div>
+                <div class="col s12 m3 l2">
+                  <b>Age: </b><%= pet.age %>
+                </div>
+              </div>
+              <b>About <%= pet.name %>: </b><%= pet.about_me %>
+            </div>
           </div>
-          <div>
-            <p><strong>working_job.owner.id: </strong> <%= working_job.owner.id %> </p>
-            <p><strong>working_job.owner.id: </strong> <%= working_job.owner.first_name %> </p>
-          <% if working_job.freelancer.nil? %>
-          <% else %>
-            <p><strong>working_job.freelancer.id: </strong> <%= working_job.freelancer.id %> </p>
-          <% end %>
-            <p><strong>Title: </strong> <%= working_job.title %> </p>
-            <p><strong>Description: </strong> <%= working_job.description %> </p>
-            <p><strong>Address: </strong> <%= working_job.address %> </p>
-            <p><strong>City: </strong> <%= working_job.city %> </p>
-            <p><strong>State: </strong> <%= working_job.state %> </p>
-            <p><strong>Zip: </strong> <%= working_job.zip %> </p>
-            <p><strong>Begin Date: </strong> <%= working_job.begin_date %> </p>
-            <p><strong>End Date: </strong> <%= working_job.end_date %> </p>
-            <p><strong>Dollar Value: </strong> <%= working_job.dollar_value %> </p>
-            <p><strong>Type of Job: </strong> <%= working_job.type_of_job %> </p>
-            <p><strong>Status: </strong> <%= working_job.status %> </p>
-            <p><strong>Recurring: </strong> <%= working_job.recurring %> </p>
-            <p><strong>Pet Location: </strong> <%= working_job.pet_location %> </p>
-            <p><strong>Expiration Date: </strong> <%= working_job.expiration_date %>
-          </div>
-      </div>
+
+        </div>
+      <% end %>
+
+      <% if @pets.length > 3 %>
+        <div class="show more">Show More</div>
+        <div class="show less">Show Less</div>
+      <% end %>
+    </div>
+
+  <% else %>
+    <div class="container">
+      <h5>You have no pet yet</h5>
     </div>
   <% end %>
 </div>
 
-<!-- PAGINATION -->
+<!-- Start of jobs where they are the owner -->
+<div class=posted_job-section>
+  <% if @posted_jobs.length != 0 %>
+    <div class="container">
+      <div class="row">
+        <h5> My Job Posting </h5>
+      </div>
+    </div>
 
-<%= paginate @pets %>
-<div class="pagination_page_info">
-  <%= page_entries_info @pets %>
+    <div class="container posted_job-container">
+      <% @posted_jobs.each do |posted_job| %>
+        <div class ="row job-class">
+          <div class="row">
+            <div class="col s12 m12">
+              <div class='right-align'>
+                <%= link_to edit_job_path(posted_job.id) do %>
+                  <i class="material-icons">edit</i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="job-info-wrapper">
+            <div class="row job-info-class">
+              <div class="col s12 m8 l8">
+                <b>Title: </b> <%= posted_job.title %>
+              </div>
+              <div class="col s12 m4 l4">
+                <b>Post Date: </b> <%= posted_job.created_at.strftime("%m-%d-%Y") %>
+              </div>
+            </div>
+          </div>
+
+          <div class="job-info-wrapper">
+            <div class="row job-info-class">
+              <div class="col s12 m8 l8">
+                <b>City: </b> <%= posted_job.city %>
+              </div>
+
+              <div class="col s12 m4 l3 ">
+                <b>Status: </b>
+                <span class="title job-status"> <%= posted_job.status %></span>
+              <!-- </div>
+              <div class="col s1 m1 l1"> -->
+                <i class="material-icons circle job-status
+                  <%= posted_job.status == "posted" ? "red" :
+                      posted_job.status == "in progress" ? "yellow" :
+                      posted_job.status == "completed" ? "green" : ""%>
+                  ">panorama_fish_eye</i>
+              </div>
+            </div>
+            <b>Job Description: </b><%= posted_job.description %>
+          </div>
+
+          <div class="col s12 m12">
+            <b>Description: </b> <%= posted_job.description %>
+          </div>
+
+        </div>
+      <% end %>
+
+      <% if @posted_jobs.length > 3 %>
+        <div class="show more">Show More</div>
+        <div class="show less">Show Less</div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="container">
+      <h5>You have no job posted yet</h5>
+    </div>
+  <% end %>
+</div>
+
+<!-- Start of jobs where they are the freelancer -->
+<div class=working_job-section>
+  <% if @working_jobs.length != 0 %>
+    <div class="container">
+      <div class="row">
+        <h5> My jobs that I am working on </h5>
+      </div>
+    </div>
+
+    <div class="container working_job-container">
+      <% @working_jobs.each do |working_job| %>
+        <div class ="row job-class">
+          <div class="row">
+            <div class="col s12 m12">
+              <div class='right-align'>
+                <%= link_to edit_job_path(working_job.id) do %>
+                  <i class="material-icons">edit</i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="job-info-wrapper">
+            <div class="row job-info-class">
+              <div class="col s12 m8 l8">
+                <b>Title: </b> <%= working_job.title %>
+              </div>
+              <div class="col s12 m4 l4">
+                <b>Post Date: </b> <%= working_job.created_at.strftime("%m-%d-%Y") %>
+              </div>
+            </div>
+          </div>
+
+          <div class="job-info-wrapper">
+            <div class="row job-info-class">
+              <div class="col s5 m8 l8">
+                <b>City: </b> <%= working_job.city %>
+              </div>
+
+              <div class="col s6 m4 l3 ">
+                <b>Status: </b>
+                <span class="title job-status"> <%= working_job.status %></span>
+                <i class="material-icons circle job-status
+                  <%= working_job.status == "posted" ? "red" :
+                      working_job.status == "in progress" ? "yellow" :
+                      working_job.status == "completed" ? "green" : ""%>
+                  ">panorama_fish_eye</i>
+              </div>
+            </div>
+            <b>Job Description: </b><%= working_job.description %>
+          </div>
+
+          <div class="col s12 m12">
+            <b>Description: </b> <%= working_job.description %>
+          </div>
+
+        </div>
+      <% end %>
+
+      <% if @working_jobs.length > 3%>
+        <div class="show more">Show More</div>
+        <div class="show less">Show Less</div>
+      <% end %>
+
+    </div>
+  <% else %>
+    <div class="container">
+      <h5>You have not taken any job yet</h5>
+    </div>
+  <% end %>
 </div>

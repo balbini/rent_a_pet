@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get '/all', to: 'jobs#all', as: :all
 
   get '/secret', to: 'jobs#secret', as: :secret
+  get '/show_all_jobs', to: 'jobs#show_all_jobs'
 end

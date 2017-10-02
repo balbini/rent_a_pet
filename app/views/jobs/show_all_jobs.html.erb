@@ -85,7 +85,11 @@
                     <b>Owner: </b> <%= job.owner.first_name %> <%= job.owner.last_name %>
                   </div>
                   <div class="col s12 m12 l12">
-                    <b>Freelancer: </b> <%= job.freelancer.first_name %> <%= job.freelancer.last_name %>
+                    <% if !job.freelancer.nil? %>
+                      <b>Freelancer: </b> <%= job.freelancer.first_name %> <%= job.freelancer.last_name %>
+                    <% else %>
+                      <b>Freelancer: </b> None
+                    <% end %>
                   </div>
                 </div>
               </div>
