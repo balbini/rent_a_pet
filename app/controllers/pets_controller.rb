@@ -20,7 +20,12 @@ class PetsController < ApplicationController
   end
 
   def edit
+    if user_check
       @pet = Pet.find_by_id(params[:id])
+    else
+      flash[:notice] = "Cannot edit other pets"
+      redirect_to user_path(current_user.slug)
+    end
   end
 
   def update
@@ -40,6 +45,7 @@ class PetsController < ApplicationController
       redirect_to user_path(current_user.slug)
     else
       flash[:error] = "Cannot delete other pets"
+      redirect_to user_path(current_user.slug)
     end
   end
 
