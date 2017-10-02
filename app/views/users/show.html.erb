@@ -49,7 +49,6 @@
 
     <div class="container pet-container">
       <% @pets.each do |pet| %>
-
         <div class="row pet-class">
           <div class="col s12 m4">
             <%= image_tag(pet.image, class:'pet-image')%>
@@ -60,7 +59,6 @@
               <%= link_to edit_pet_path(pet.id) do %>
                 <i class="material-icons">edit</i>
               <% end %>
-                <%= link_to material_icon.delete, posted_job, :url => "/jobs/#{posted_job.id}", method: :delete %>
                 <%= link_to material_icon.delete, pet, :url => "/pets/#{pet.id}", method: :delete %>
             </div>
 
@@ -141,9 +139,9 @@
               <!-- </div>
               <div class="col s1 m1 l1"> -->
                 <i class="material-icons circle job-status
-                  <%= posted_job.status == "posted" ? "red" :
-                      posted_job.status == "in progress" ? "yellow" :
-                      posted_job.status == "completed" ? "green" : ""%>
+                  <%= posted_job.status == "Open" ? "green" :
+                      posted_job.status == "In progress" ? "yellow" :
+                      posted_job.status == "Completed" ? "red" : ""%>
                   ">panorama_fish_eye</i>
               </div>
             </div>
@@ -212,9 +210,9 @@
                 <b>Status: </b>
                 <span class="title job-status"> <%= working_job.status %></span>
                 <i class="material-icons circle job-status
-                  <%= working_job.status == "posted" ? "red" :
-                      working_job.status == "in progress" ? "yellow" :
-                      working_job.status == "completed" ? "green" : ""%>
+                  <%= working_job.status == "Open" ? "green" :
+                      working_job.status == "In progress" ? "yellow" :
+                      working_job.status == "Completed" ? "red" : ""%>
                   ">panorama_fish_eye</i>
               </div>
             </div>

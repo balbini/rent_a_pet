@@ -33,7 +33,7 @@ class JobsController < ApplicationController
   # end
 
   def show
-    @job = Job.all
+    @job = Job.find(params[:id])
   end
 
   def show_all_jobs
@@ -47,7 +47,7 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     if job_params["begin_date"].to_date < DateTime.now.to_date
-        flash[:error] = "Job cannot start in the past. Please fix the dates"
+        flash[:error] = "Job cannot start in the past. Please fix the dates and try again."
         render new_job_path(@job)
     else
       if job_params["end_date"].to_date >= job_params["begin_date"].to_date
@@ -57,18 +57,18 @@ class JobsController < ApplicationController
           flash[:error] = "Sorry! We ran into an error - could you try again?"
         end
       else
-        flash[:error] = "Job cannot end before the begin date. Please fix the dates and update again"
+        flash[:error] = "Job cannot end before it starts. Please fix the dates and try again."
         render new_job_path(@job)
       end
     end
   end
 
   def edit
+    @job = Job.find_by_id(params[:id])
   end
 
   def update
-    if (check_if_job_status_submitted_by_freelancer == true && check_if_job_is_freelancers_for_submission == true) || (check_if_job_status_submitted_by_freelancer == true && check_if_job_is_saved_to_db_by_freelancer == false)
-      # explode
+    if (check_if_job_status_submitted_by_freelancer && check_if_job_is_freelancers_for_submission) || (check_if_job_status_submitted_by_freelancer && check_if_job_is_saved_to_db_by_freelancer == false)
       if @job.save
         # explode
         @job.update_attributes(job_freelancer_params)
@@ -78,15 +78,14 @@ class JobsController < ApplicationController
         render :edit
       end
     elsif check_if_job_status_submitted_by_freelancer == true && check_if_job_is_freelancers_for_submission != true
-      explode
       flash[:error] = "Sorry! You can only update your own jobs!"
     end
 
-    if check_if_job_is_subitted_owners == true
+    if check_if_job_is_subitted_owners
       # explode
       if job_params["begin_date"].to_date < DateTime.now.to_date
         # explode
-          flash[:error] = "Job cannot start in the past. Please fix the dates"
+          flash[:error] = "Job cannot start in the past. Please fix the dates and try again."
           render :edit
       elsif job_params["end_date"].to_date >= job_params["begin_date"].to_date
         # explode
@@ -98,7 +97,7 @@ class JobsController < ApplicationController
              render :edit
           end
       else
-        flash[:error] = "End date cannot be before the start date. Please fix the dates"
+        flash[:error] = "Job cannot end before it starts. Please fix the dates and try again."
         render :edit
       end
     elsif check_if_job_status_submitted_by_freelancer == false && check_if_job_is_subitted_owners == false
@@ -125,16 +124,6 @@ class JobsController < ApplicationController
       flash[:error] = "Sorry! Only the owner can delete the job"
       redirect_to job_path(@job.id)
     end
-  end
-
-  def edit
-    @job = Job.find_by_id(params[:id])
-  end
-
-  def update
-      @job = Job.find_by_id(params[:id])
-      @job.update(job_params)
-      redirect_to user_path(current_user.slug)
   end
 
   def find_job

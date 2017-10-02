@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="col s12">
-      <% @jobs.each do |pet| %>
         <h1> <%= @job.title %> </h1>
         <hr>
         <p><strong>ID: </strong> <%= @job.id %> </p>
@@ -36,7 +35,7 @@
         <p><strong>Name of pet: </strong> <%= @job.pet.name %>
         <p><strong>Pet Image: </strong> <%= image_tag(@job.pet.image) %>
 
-        <% if check_if_job_is_saved_to_db_by_freelancer == false %>
+        <% if check_if_job_is_saved_to_db_by_freelancer == true %>
           <p><strong>Freelancer Info: </strong> <%= @job.freelancer.first_name %> <%= @job.freelancer.last_name %> </p>
         <% end %>
 
