@@ -5,4 +5,17 @@ class Job < ApplicationRecord
   belongs_to :owner, :class_name => "User", :foreign_key => "owner_id", optional: true
   belongs_to :freelancer, :class_name => "User", :foreign_key => "freelancer_id", optional: true
   belongs_to :pet, optional: true
+  searchkick
+
+  def search_data
+    {
+      title: title,
+      description: description,
+      city: city,
+      zip: zip,
+      owner_name: owner.first_name,
+      freelancer_name: freelancer.nil? ? "" : freelancer.first_name,
+      pet_breed: pet.breed,
+    }
+  end
 end

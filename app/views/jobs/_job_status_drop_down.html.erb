@@ -1,7 +1,7 @@
 <% if @job.status == 'Open' %>
-  <%= f.select :status, options_for_select(["Open", "Inprogress", "Closed"]) %>
-<% elsif @job.status == 'Inprogress' %>
-  <%= f.select :status, options_for_select(["Inprogress", "Open", "Closed"]) %>
+  <%= f.select :status, options_for_select(["Open", "In progress", "Closed"]) %>
+<% elsif @job.status == 'In progress' %>
+  <%= f.select :status, options_for_select(["In progress", "Open", "Closed"]) %>
 <% else %>
-  <%= f.select :status, options_for_select(["Closed", "Open", "Inprogress"]) %>
+  <%= f.select :status, options_for_select(["Closed", "Open", "In progress"]) %>
 <% end %>

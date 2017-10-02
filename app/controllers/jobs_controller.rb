@@ -5,8 +5,32 @@ class JobsController < ApplicationController
   before_action :check_owner, only: [:edit, :update, :destroy]
   helper_method :check_if_job_is_owners, :check_if_job_is_subitted_owners, :check_if_job_is_saved_to_db_by_freelancer, :check_if_job_is_freelancers, :check_if_job_status_submitted_by_freelancer, :check_if_job_is_freelancers_for_submission,
 
+
   def index
+
   end
+
+  def all
+    if params[:query].present?
+      @jobs = Job.search(params[:query], page: params[:page], per_page: 1, misspellings: {below: 5})
+    else
+      @jobs = []
+    end
+  end
+  
+  # def autocomplete
+  #   render json: Job.search(params[:query], autocomplete: false, limit: 10).map    do |job|
+  #     {
+  #       title: job.title,
+  #       description: job.description,
+  #       city: job.city,
+  #       zip: job.zip,
+  #       owner_name: job.owner.first_name,
+  #       freelancer_name: job.freelancer.nil? ? "" : job.freelancer.first_name,
+  #       pet_breed: job.pet.breed,
+  #     }
+  #   end
+  # end
 
   def show
   end
@@ -140,6 +164,7 @@ class JobsController < ApplicationController
     else
       true
     end
+    # !job_freelancer_params["freelancer_id"].nil?
   end
 
   def check_if_job_is_freelancers_for_submission

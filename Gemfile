@@ -62,6 +62,6 @@ gem 'ffaker'
 
 gem 'friendly_id'
 
-gem 'kaminari'
+gem 'kaminari', :git => 'https://github.com/kaminari/kaminari'
 
-gem 'bootstrap-datepicker-rails'
+gem 'searchkick'
