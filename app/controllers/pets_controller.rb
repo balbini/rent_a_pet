@@ -24,18 +24,27 @@ class PetsController < ApplicationController
   end
 
   def update
-    @pet = Pet.find_by_id(params[:id])
-    @pet.update(pet_params)
-    redirect_to user_path(current_user.slug)
+    if user_check
+      @pet = Pet.find_by_id(params[:id])
+      @pet.update(pet_params)
+      redirect_to user_path(current_user.slug)
+    else
+      flash[:error] = "Cannot edit other pets"
+    end
   end
 
   def destroy
-    @pet = Pet.find_by_id(params[:id])
-    @pet.destroy
-    redirect_to user_path(current_user.slug)
+    if user_check
+      @pet = Pet.find_by_id(params[:id])
+      @pet.destroy
+      redirect_to user_path(current_user.slug)
+    else
+      flash[:error] = "Cannot delete other pets"
+    end
   end
 
   def user_check
+    @pet = Pet.find_by_id(params[:id])
     if current_user.id.to_s == @pet.user_id.to_s
       true
     else
