@@ -14,7 +14,7 @@ class JobsController < ApplicationController
   def show_all_jobs
     @jobs = Job.all
   end
-  
+
   def new
     @job = Job.new
   end
