@@ -89,7 +89,7 @@
   <% end %>
 </div>
 
-  <!-- Start of jobs where they are the owner -->
+<!-- Start of jobs where they are the owner -->
 <div class=posted_job-section>
   <% if @posted_jobs.length != 0 %>
     <div class="container">
@@ -113,7 +113,7 @@
 
           <div class="job-info-wrapper">
             <div class="row job-info-class">
-              <div class="col s12 m7 l8">
+              <div class="col s12 m8 l8">
                 <b>Title: </b> <%= posted_job.title %>
               </div>
               <div class="col s12 m4 l4">
@@ -124,15 +124,15 @@
 
           <div class="job-info-wrapper">
             <div class="row job-info-class">
-              <div class="col s5 m7 l8">
+              <div class="col s12 m8 l8">
                 <b>City: </b> <%= posted_job.city %>
               </div>
 
-              <div class="col s6 m4 l3 ">
+              <div class="col s12 m4 l3 ">
                 <b>Status: </b>
                 <span class="title job-status"> <%= posted_job.status %></span>
-              </div>
-              <div class="col s1 m1 l1">
+              <!-- </div>
+              <div class="col s1 m1 l1"> -->
                 <i class="material-icons circle job-status
                   <%= posted_job.status == "posted" ? "red" :
                       posted_job.status == "in progress" ? "yellow" :
@@ -140,6 +140,7 @@
                   ">panorama_fish_eye</i>
               </div>
             </div>
+            <b>Job Description: </b><%= posted_job.description %>
           </div>
 
           <div class="col s12 m12">
@@ -185,7 +186,7 @@
 
           <div class="job-info-wrapper">
             <div class="row job-info-class">
-              <div class="col s12 m7 l8">
+              <div class="col s12 m8 l8">
                 <b>Title: </b> <%= working_job.title %>
               </div>
               <div class="col s12 m4 l4">
@@ -196,15 +197,13 @@
 
           <div class="job-info-wrapper">
             <div class="row job-info-class">
-              <div class="col s5 m7 l8">
+              <div class="col s5 m8 l8">
                 <b>City: </b> <%= working_job.city %>
               </div>
 
               <div class="col s6 m4 l3 ">
                 <b>Status: </b>
                 <span class="title job-status"> <%= working_job.status %></span>
-              </div>
-              <div class="col s1 m1 l1">
                 <i class="material-icons circle job-status
                   <%= working_job.status == "posted" ? "red" :
                       working_job.status == "in progress" ? "yellow" :
@@ -212,6 +211,7 @@
                   ">panorama_fish_eye</i>
               </div>
             </div>
+            <b>Job Description: </b><%= working_job.description %>
           </div>
 
           <div class="col s12 m12">

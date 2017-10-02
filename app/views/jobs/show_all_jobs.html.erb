@@ -1,23 +1,109 @@
-<h1>Show all the Jobs</h1>
-<hr>
-<% @jobs.each do |job| %>
-  <p><strong>Title: </strong> <%= job.title %> </p>
-  <p><strong>Post Date: </strong> <%= job.created_at %> </p>
-  <p><strong>Description: </strong> <%= job.description %> </p>
-  <p><strong>Address: </strong> <%= job.address %> </p>
-  <p><strong>City: </strong> <%= job.city %> </p>
-  <p><strong>State: </strong> <%= job.state %> </p>
-  <p><strong>Zip: </strong> <%= job.zip %> </p>
-  <p><strong>Begin Date: </strong> <%= job.begin_date %> </p>
-  <p><strong>End Date: </strong> <%= job.end_date %> </p>
-  <p><strong>Dollar Value: </strong> <%= job.dollar_value %> </p>
-  <p><strong>Type of Job: </strong> <%= job.type_of_job %> </p>
-  <p><strong>Status: </strong> <%= job.status %> </p>
-  <p><strong>Recurring: </strong> <%= job.recurring %> </p>
-  <p><strong>Pet: </strong> <%= job.pet.name %> </p>
-  <p><strong>Pet Location: </strong> <%= job.pet_location %> </p>
-  <p><strong>Owner: </strong> <%= job.owner.first_name %> <%= job.owner.last_name %></p>
-  <p><strong>freelancer: </strong> <%= job.freelancer.first_name %> <%= job.freelancer.last_name %></p>
-  <p><strong>Expiration Date: </strong> <%= job.expiration_date %> </p>
-  <hr>
-<% end %>
+<div class=job-section>
+  <% if @jobs.length != 0 %>
+    <div class="container">
+      <div class="row">
+        <h5> All Job Posting </h5>
+      </div>
+    </div>
+
+    <div class="container job-container">
+      <% @jobs.each do |job| %>
+        <div class ="row job-class">
+          <div class="row">
+            <div class="col s12 m12">
+              <div class='right-align'>
+                <%= link_to edit_job_path(job.id) do %>
+                  <i class="material-icons">edit</i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="job-info-wrapper">
+            <div class="row job-info-class">
+              <div class="col s12 m8 l8">
+                <b>Title: </b> <%= job.title %>
+              </div>
+              <div class="col s12 m4 l4">
+                <b>Post Date: </b> <%= job.created_at.strftime("%m-%d-%Y") %>
+              </div>
+            </div>
+          </div>
+
+          <div class="job-info-wrapper">
+            <div class="row job-info-class">
+              <div class="col s12 m4 l4">
+                <b>City: </b> <%= job.city %>
+              </div>
+
+              <div class="col s12 m4 l4">
+                <b>Type of Job: </b> <%= job.type_of_job %>
+              </div>
+
+              <div class="col s12 m4 l4">
+                <b>Dollar Value: </b> <%= job.dollar_value %>
+                <% num = job.dollar_value <= 25 ? 1 : (job.dollar_value/25).round %>
+                <% num = num > 4 ? 4 : num %>
+                <% num.times do %>
+                   <i class="material-icons green">attach_money</i>
+                <% end %>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="job-info-wrapper">
+            <div class="row job-info-class">
+              <div class="col s12 m4 l4">
+                <b>Begin Date: </b> <%= job.begin_date.strftime("%m-%d-%Y") %>
+              </div>
+              <div class="col s12 m4 l4">
+                <b>End Date: </b> <%= job.end_date.strftime("%m-%d-%Y") %>
+              </div>
+              <div class="col s12 m4 l4">
+                <b>Recurring: </b> <%= job.recurring %>
+              </div>
+            </div>
+          </div>
+
+          <div class="job-info-wrapper">
+            <b>Job Description: </b><%= job.description %>
+            <div class="row job-info-class">
+              <div class="col s6 m8 l8 ">
+                <b>Status: </b>
+                <span class="title job-status"> <%= job.status %></span>
+                <i class="material-icons circle job-status
+                  <%= job.status == "posted" ? "red" :
+                      job.status == "in progress" ? "yellow" :
+                      job.status == "completed" ? "green" : ""%>
+                  ">panorama_fish_eye</i>
+              </div>
+
+              <div class="col s12 m4 l4">
+                <div class="row">
+                  <div class="col s12 m12 l12">
+                    <b>Owner: </b> <%= job.owner.first_name %> <%= job.owner.last_name %>
+                  </div>
+                  <div class="col s12 m12 l12">
+                    <b>Freelancer: </b> <%= job.freelancer.first_name %> <%= job.freelancer.last_name %>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      <% end %>
+
+      <% if @jobs.length > 3 %>
+        <div class="show more">Show More</div>
+        <div class="show less">Show Less</div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="container">
+      <h5>You have no job posted yet</h5>
+    </div>
+  <% end %>
+</div>
