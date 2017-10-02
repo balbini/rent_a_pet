@@ -2,13 +2,15 @@
 <div class="container">
   <div class="row">
     <div class="col s12 m4" style="border: red solid 2px">
+      <% if !@user.image.nil? %>
         <%= image_tag(@user.image, class:'circle prof-image')%>
+      <% end %>
     </div>
     <div class="col s12 m8 prof-info" style="border: black solid 2px">
       <div class='right-align'>
-        <%= link_to edit_user_registration_path(current_user) do %>
+          <%= link_to edit_user_registration_path(current_user) do %>
           <i class="material-icons">edit</i>
-        <% end %>
+          <% end %>
       </div>
         <b>Name: </b><%= @user.first_name.upcase %> <%= @user.last_name.upcase %> <br>
         <b>About Me: </b><%= @user.about_me %> <br>
@@ -16,10 +18,11 @@
         <b>Date Joined: </b><%= @user.created_at.strftime("%B").to_s + " " + @user.created_at.year.to_s %></p>
     </div>
     <div class="center-align">
-  <p><%= link_to 'Add Pet', new_pet_path, class: 'btn btn-lg' %>
-  </p>
-  <p><%= link_to 'Add Job', new_job_path, class: 'btn btn-lg' %>
-  </p>
+        <p><%= link_to 'Add Pet', new_pet_path, class: 'btn btn-lg' %>
+        </p>
+        <p><%= link_to 'Add Job', new_job_path, class: 'btn btn-lg' %>
+        </p>
+      </div>
   </div>
   </div>
 </div>
