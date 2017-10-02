@@ -12,13 +12,12 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap-datepicker
  */
+
 
  @import "materialize/components/color";
  @import 'materialize';
  @import "materialize/extras/nouislider";
-
 
 .nav-wrapper {
   background: #5e35b1;
@@ -35,6 +34,44 @@ h1 {
 body {
   background: #e3f2fd;
 }
+
 #sidenav-overlay{
   z-index: 996
+}
+
+
+// PAGINATION CSS - https://stackoverflow.com/questions/26615157/pagination-kaminari-no-css-applyed
+.pagination a, .pagination span.current, .pagination span.gap {
+    // float: left;
+    // padding: 0 14px;
+    // line-height: 38px;
+    text-decoration: none;
+    color: black;
+    // border: 1px solid #DDD;
+    // border-left-width: 0;
+    // background-color: #e3f2fd;
+}
+
+.pagination_page_info {
+  padding-bottom: 2%
+}
+
+.container > .row > h5 {
+  color: #0080ff;
+}
+
+.show {
+  display: none;
+  color: #66b3ff;
+  text-align: right;
+}
+
+.show:hover {
+  cursor: pointer;
+}
+
+.pet-container div:nth-child(n+4),
+.posted_job-container div:nth-child(n+4),
+.working_job-container div:nth-child(n+4) {
+  display: none;
 }

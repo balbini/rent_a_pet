@@ -20,3 +20,7 @@ app/assets/.DS_Store
 /yarn-error.log
 
 .byebug_history
+
+app/assets/images/RentAPet.html
+app/assets/images/RentAPet_files/
+
