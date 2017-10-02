@@ -1,0 +1,5 @@
+<% if @user.image.nil? %>
+  <%= image_tag(asset_path('default_user_no_image.png'), class: "circle") %>
+<% else %>
+  <%= image_tag(@user.image, class: "circle") %>
+<% end %>
