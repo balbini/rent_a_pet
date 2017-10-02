@@ -19,7 +19,6 @@
  @import 'materialize';
  @import "materialize/extras/nouislider";
 
-
 .nav-wrapper {
   background: #5e35b1;
 }
@@ -35,6 +34,27 @@ h1 {
 body {
   background: #e3f2fd;
 }
+
 .navbar-fixed {
   z-index: 996;
+}
+
+.container > .row > h5 {
+  color: #0080ff;
+}
+
+.show {
+  display: none;
+  color: #66b3ff;
+  text-align: right;
+}
+
+.show:hover {
+  cursor: pointer;
+}
+
+.pet-container div:nth-child(n+4),
+.posted_job-container div:nth-child(n+4),
+.working_job-container div:nth-child(n+4) {
+  display: none;
 }

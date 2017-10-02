@@ -4,9 +4,9 @@ class UsersController < ApplicationController
   helper_method :check_if_owner_has_picture
 
   def show
-    @pets = @user.pets.page(params[:page]).per(3).order(created_at: :desc)
-    @posted_jobs = @user.posted_jobs.order(created_at: :desc).page(params[:page]).per(3)
-    @working_jobs = @user.working_jobs.order(created_at: :desc).page(params[:page]).per(3)
+    @pets = @user.pets
+    @posted_jobs = @user.posted_jobs.order(created_at: :desc)
+    @working_jobs = @user.working_jobs.order(created_at: :desc)
   end
 
   def find_user
