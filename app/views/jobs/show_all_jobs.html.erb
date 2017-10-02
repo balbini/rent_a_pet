@@ -73,9 +73,9 @@
                 <b>Status: </b>
                 <span class="title job-status"> <%= job.status %></span>
                 <i class="material-icons circle job-status
-                  <%= job.status == "posted" ? "red" :
-                      job.status == "in progress" ? "yellow" :
-                      job.status == "completed" ? "green" : ""%>
+                  <%= job.status == "Open" ? "green" :
+                      job.status == "In progress" ? "yellow" :
+                      job.status == "Completed" ? "red" : ""%>
                   ">panorama_fish_eye</i>
               </div>
 
