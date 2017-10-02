@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :users, param: :slug
 
   get '/secret', to: 'jobs#secret', as: :secret
+  get '/show_all_jobs', to: 'jobs#show_all_jobs'
 end

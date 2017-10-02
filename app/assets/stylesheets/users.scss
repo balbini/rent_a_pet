@@ -1,11 +1,28 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 .prof-image {
   // shes is maximizing the width of the column
   width: 100%;
 }
 .prof-info {
+  margin-top: 3%;
+}
 
+.user-section {
+  margin-top: 50px;
+}
+
+.user-class {
+  border: 2px solid #8080ff;
+  border-radius: 8px;
+}
+
+.user-info-wrapper {
+  padding: 0% 2%;
+}
+
+.user-info-class {
+  border: 1px solid #b3b3ff;
+  border-radius: 4px;
 }
