@@ -13,6 +13,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
   :lockable
 
+  mount_uploader :image, ProfileUploader
+
   # use email address to make slug unique
   include FriendlyId
   friendly_id :first_name_and_last_name, use: [:finders, :slugged]
