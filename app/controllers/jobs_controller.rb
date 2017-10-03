@@ -3,7 +3,7 @@ class JobsController < ApplicationController
   before_action :authenticate_user!, only: [:check_owner, :check_freelancer, :new, :create, :edit, :update, :destroy, :job_freelancer_params]
   before_action :find_job, only: [:edit, :show, :update, :destroy, :check_owner]
   before_action :check_owner, only: [:edit, :update, :destroy]
-  helper_method :check_if_job_is_owners, :check_if_job_is_subitted_owners, :check_if_job_is_saved_to_db_by_freelancer, :check_if_job_is_freelancers, :check_if_job_status_submitted_by_freelancer, :check_if_job_is_freelancers_for_submission,
+
 
 
   def index
@@ -118,60 +118,9 @@ class JobsController < ApplicationController
     end
   end
 
-  def find_job
-    @job = Job.find_by_id(params[:id])
-  end
 
-  def check_if_job_is_owners
-    if current_user.id.to_s == @job.owner.id.to_s
-      true
-    else
-      false
-    end
-  end
 
-  def check_if_job_is_subitted_owners
-    if job_params["owner_id"].to_s == @job.owner.id.to_s
-      true
-    else
-      false
-    end
-  end
 
-  def check_if_job_is_saved_to_db_by_freelancer
-    if @job.freelancer.nil?
-      false
-    else
-      true
-    end
-  end
-
-  def check_if_job_is_freelancers
-    if current_user.id.to_s == @job.freelancer.id.to_s
-      true
-    else
-      false
-    end
-  end
-
-  def check_if_job_status_submitted_by_freelancer
-    if job_freelancer_params["freelancer_id"].nil?
-      false
-    else
-      true
-    end
-    # !job_freelancer_params["freelancer_id"].nil?
-  end
-
-  def check_if_job_is_freelancers_for_submission
-    if check_if_job_status_submitted_by_freelancer == true && check_if_job_is_saved_to_db_by_freelancer == true
-      if job_freelancer_params["freelancer_id"].to_s == @job.freelancer.id.to_s
-        true
-      else
-        false
-      end
-    end
-  end
 
   private
   def job_params
