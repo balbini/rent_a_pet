@@ -70,6 +70,7 @@ body {
   cursor: pointer;
 }
 
+// this is there the div is hidden - so for anything in the .pet-container after the 3rd div, make it display non shich is then flipped later
 .pet-container div:nth-child(n+4),
 .posted_job-container div:nth-child(n+4),
 .working_job-container div:nth-child(n+4) {
