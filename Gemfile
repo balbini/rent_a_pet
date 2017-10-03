@@ -67,3 +67,5 @@ gem 'kaminari', :git => 'https://github.com/kaminari/kaminari'
 gem 'searchkick'
 
 gem 'carrierwave', '~> 1.0'
+# For different versions of an image
+gem 'mini_magick'

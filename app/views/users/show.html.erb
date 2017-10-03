@@ -3,7 +3,8 @@
   <div class="container">
     <div class="row">
       <div class="col s4 offset-s4 m4 offset-m4">
-        <%= render "user_has_picture" %>
+        <%= image_tag(@user.image_url(:thumb).to_s, class: "circle prof-image") %>
+        
       </div>
       <div class="col s12 m10 offset-m1 prof-info user-class">
         <div class='right-align'>
@@ -51,7 +52,7 @@
       <% @pets.each do |pet| %>
         <div class="row pet-class">
           <div class="col s12 m4">
-            <%= image_tag(pet.image, class:'pet-image')%>
+            <%= image_tag(pet.image, class:'pet-image') %>
           </div>
 
           <div class="col s12 m8">
