@@ -119,6 +119,7 @@
                   <%= link_to edit_job_path(posted_job.id) do %>
                     <i class="material-icons">edit</i>
                   <% end %>
+                  <%= link_to material_icon.delete, posted_job, :url => "/jobs/#{posted_job.id}", method: :delete, data: { confirm: "Are you sure you want to delete the #{posted_job.title} job?" } %>
                 </div>
               </div>
             </div>

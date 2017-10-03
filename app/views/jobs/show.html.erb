@@ -17,8 +17,6 @@
                   <%= link_to edit_job_path(@job.id) do %>
                     <i class="material-icons">edit</i>
                   <% end %>
-                  <%= link_to 'Delete', {:controller => "jobs", :action => 'destroy', :id => @job.id}, data: {:confirm => "Are you sure you want to delete the #{@job.title} job?"}, :method => :delete, class: 'btn' %>
-
                 </div>
               </div>
             </div>
