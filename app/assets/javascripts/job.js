@@ -50,9 +50,6 @@ $(document).on('turbolinks:load', function(){
     }
   });
   $('.typeahead').typeahead(null, {
-    hint: true,
-    highlight: true,
-    minLength: 1,
     source: jobs,
   })
 })

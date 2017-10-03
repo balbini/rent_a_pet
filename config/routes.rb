@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       get :autocomplete
     end
   end
-  
+
   resources :pets
   resources :users, param: :slug
   get '/all', to: 'jobs#all', as: :all

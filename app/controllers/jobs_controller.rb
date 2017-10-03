@@ -20,24 +20,11 @@ class JobsController < ApplicationController
 
   def autocomplete
     render json: Job.search(params[:query], {
-        fields: ["title", "description", "city"]
+        fields: ["title", "description", "city", ":pet_breed"]
         }).map(&:title)
   end
 
 
-  # def autocomplete
-  #   render json: Job.search(params[:query], autocomplete: false, limit: 10).map    do |job|
-  #     {
-  #       title: job.title,
-  #       description: job.description,
-  #       city: job.city,
-  #       zip: job.zip,
-  #       owner_name: job.owner.first_name,
-  #       freelancer_name: job.freelancer.nil? ? "" : job.freelancer.first_name,
-  #       pet_breed: job.pet.breed,
-  #     }
-  #   end
-  # end
 
   def show
     @job = Job.find(params[:id])
