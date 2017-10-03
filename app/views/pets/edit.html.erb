@@ -4,16 +4,16 @@
   <%= form_for @pet do |f| %>
 
     <div>
-      Name:<%= f.text_field :name %>
+      Name:<%= f.text_field :name, maxlength: 25 %>
     </div>
     <div>
-      Breed:<%= f.text_area :breed %>
+      Breed:<%= f.text_area :breed, maxlength: 30 %>
     </div>
     <div>
-      Age:<%= f.text_area :age %>
+      Age:<%= f.number_field :age %>
     </div>
     <div>
-      About Me:<%= f.text_area :about_me %>
+      About Me:<%= f.text_area :about_me, maxlength: 1000 %>
     </div>
     <div>
       Image:<%= f.file_field :image %>
