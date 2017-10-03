@@ -1,0 +1,67 @@
+<div class ="row job-class">
+  <% if current_user &&                               #must be logged in
+        (job.owner.id == current_user.id ||    #is owner
+         job.freelancer_id.nil? ||             #jot still open
+         job.freelancer_id == current_user.id) #is freelancer%>
+    <div class="row">
+      <div class="col s12 m12">
+        <div class='right-align'>
+          <%= link_to edit_job_path(job.id) do %>
+            <i class="material-icons">edit</i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="job-info-wrapper">
+    <div class="row job-info-class">
+      <div class="col s12 m4 l4">
+        <b>Title: </b> <%= job.title %>
+      </div>
+      <div class="col s12 m4 l4">
+        <b>Post Date: </b> <%= job.created_at.strftime("%m-%d-%Y") %>
+      </div>
+      <div class="col s12 m4 l4">
+        <b>Begin Date: </b> <%= job.begin_date.strftime("%m-%d-%Y") %>
+      </div>
+    </div>
+  </div>
+
+  <div class="job-info-wrapper">
+    <div class="row job-info-class">
+      <div class="col s12 m8 l8">
+        <b>City: </b> <%= job.city %>
+      </div>
+
+      <div class="col s12 m4 l3 ">
+        <b>Status: </b>
+        <span class="title job-status"> <%= job.status %></span>
+      <!-- </div>
+      <div class="col s1 m1 l1"> -->
+        <i class="material-icons circle job-status
+          <%= job.status == "Open" ? "green" :
+              job.status == "In progress" ? "yellow" :
+              job.status == "Completed" ? "red" : ""%>
+          ">panorama_fish_eye</i>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <b>Job Description: </b><%= job.description %>
+      </div>
+    </div>
+  </div>
+
+  <div class="job-info-wrapper">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <div class='right-align'>
+          <%= link_to "job details", job_path(job.id) %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

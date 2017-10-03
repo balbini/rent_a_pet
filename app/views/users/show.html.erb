@@ -62,7 +62,7 @@
                 <%= link_to edit_pet_path(pet.id) do %>
                   <i class="material-icons">edit</i>
                 <% end %>
-                  <%= link_to material_icon.delete, pet, :url => "/pets/#{pet.id}", method: :delete %>
+                  <%= link_to material_icon.delete, pet, :url => "/pets/#{pet.id}", method: :delete, data: { confirm: 'Are you sure?' } %>
               </div>
             <% end %>
             <div class="pet-info-wrapper">

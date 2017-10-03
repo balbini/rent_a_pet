@@ -3,7 +3,7 @@
   min-width: 160px;
   margin-top: 2px;
   padding: 5px 0;
-  background-color: rgba(255, 255, 255, .25);
+  background-color: rgba(255, 255, 255, 1);
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
   *border-right-width: 2px;
@@ -31,9 +31,12 @@
 
 .job-search {
   .twitter-typeahead {
-    width: 100%;
+    width: 94%;
   }
-  .btn {
+  .search_button {
     vertical-align: top;
+    background-color: transparent;
+    border: none;
   }
+
 }

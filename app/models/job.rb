@@ -5,7 +5,7 @@ class Job < ApplicationRecord
   belongs_to :owner, :class_name => "User", :foreign_key => "owner_id", optional: true
   belongs_to :freelancer, :class_name => "User", :foreign_key => "freelancer_id", optional: true
   belongs_to :pet, optional: true
-  searchkick word_start: [:title, :description, :city, :pet_breed]
+  searchkick word_start: [:title, :description, :city, :pet_breed, :status]
 
   def search_data
     {
@@ -16,6 +16,7 @@ class Job < ApplicationRecord
       owner_name: owner.first_name,
       freelancer_name: freelancer.nil? ? "" : freelancer.first_name,
       pet_breed: pet.breed,
+      status: status,
     }
   end
 end
