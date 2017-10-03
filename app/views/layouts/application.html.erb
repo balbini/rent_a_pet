@@ -48,13 +48,13 @@
 
 
     <!-- FLASH MESSAGE START-->
-    <div class="container">
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>">
-          <%= value %>
-        </div>
-      <% end %>
-    </div>
+      <div class="col s8 push-s2">
+        <% flash.each do |name, msg| %>
+         <div id='toast-container'>
+           <%= javascript_tag "Materialize.toast('#{msg}', 4000)" %>
+         </div>
+        <% end %>
+      </div>
     <!-- FLASH END -->
 
       <%= yield %>
