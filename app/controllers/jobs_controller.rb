@@ -12,7 +12,9 @@ class JobsController < ApplicationController
 
   def all
     if params[:query].present?
-      @jobs = Job.search(params[:query], page: params[:page], per_page: 1, misspellings: {below: 5})
+      @jobs = Job.search(params[:query], page: params[:page], per_page: 5, misspellings: {below: 5}, where: {
+        status: {not: 'Completed'}
+        })
     else
       @jobs = []
     end
@@ -23,8 +25,6 @@ class JobsController < ApplicationController
         fields: ["title", "description", "city", "pet_breed"]
         }).map(&:title)
   end
-
-
 
   def show
     @job = Job.find(params[:id])
@@ -117,8 +117,6 @@ class JobsController < ApplicationController
       redirect_to job_path(@job.id)
     end
   end
-
-
 
 
 
