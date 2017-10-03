@@ -4,14 +4,16 @@
     <div class="row">
       <div class="col s4 offset-s4 m4 offset-m4">
         <%= image_tag(@user.image_url(:thumb).to_s, class: "circle prof-image") %>
-        
+
       </div>
       <div class="col s12 m10 offset-m1 prof-info user-class">
-        <div class='right-align'>
-          <%= link_to edit_user_registration_path(current_user) do %>
-            <i class="material-icons">edit</i>
-          <% end %>
-        </div>
+        <% if current_user && (@user.id == current_user.id) %>
+          <div class='right-align'>
+            <%= link_to edit_user_registration_path(current_user) do %>
+              <i class="material-icons">edit</i>
+            <% end %>
+          </div>
+        <% end %>
         <div class="user-info-wrapper">
           <div class="row user-info-class">
             <div class="col s10 m6 l5 xl4">
@@ -56,13 +58,14 @@
           </div>
 
           <div class="col s12 m8">
-            <div class='right-align'>
-              <%= link_to edit_pet_path(pet.id) do %>
-                <i class="material-icons">edit</i>
-              <% end %>
-                <%= link_to material_icon.delete, pet, :url => "/pets/#{pet.id}", method: :delete, data: { confirm: 'Are you sure?' } %>
-            </div>
-
+            <% if current_user && (@user.id == current_user.id) %>
+              <div class='right-align'>
+                <%= link_to edit_pet_path(pet.id) do %>
+                  <i class="material-icons">edit</i>
+                <% end %>
+                  <%= link_to material_icon.delete, pet, :url => "/pets/#{pet.id}", method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
+            <% end %>
             <div class="pet-info-wrapper">
               <div class=" row pet-info-class">
                 <div class="col s12 m4 l5">
@@ -107,23 +110,31 @@
     <div class="container posted_job-container">
       <% @posted_jobs.each do |posted_job| %>
         <div class ="row job-class">
-          <div class="row">
-            <div class="col s12 m12">
-              <div class='right-align'>
-                <%= link_to edit_job_path(posted_job.id) do %>
-                  <i class="material-icons">edit</i>
-                <% end %>
+          <% if current_user &&                               #must be logged in
+                (posted_job.owner.id == current_user.id ||    #is owner
+                 posted_job.freelancer_id.nil? ||             #jot still open
+                 posted_job.freelancer_id == current_user.id) #is freelancer%>
+            <div class="row">
+              <div class="col s12 m12">
+                <div class='right-align'>
+                  <%= link_to edit_job_path(posted_job.id) do %>
+                    <i class="material-icons">edit</i>
+                  <% end %>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
 
           <div class="job-info-wrapper">
             <div class="row job-info-class">
-              <div class="col s12 m8 l8">
+              <div class="col s12 m4 l4">
                 <b>Title: </b> <%= posted_job.title %>
               </div>
               <div class="col s12 m4 l4">
                 <b>Post Date: </b> <%= posted_job.created_at.strftime("%m-%d-%Y") %>
+              </div>
+              <div class="col s12 m4 l4">
+                <b>Begin Date: </b> <%= posted_job.begin_date.strftime("%m-%d-%Y") %>
               </div>
             </div>
           </div>
@@ -146,11 +157,22 @@
                   ">panorama_fish_eye</i>
               </div>
             </div>
-            <b>Job Description: </b><%= posted_job.description %>
+
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <b>Job Description: </b><%= posted_job.description %>
+              </div>
+            </div>
           </div>
 
-          <div class="col s12 m12">
-            <b>Description: </b> <%= posted_job.description %>
+          <div class="job-info-wrapper">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <div class='right-align'>
+                  <%= link_to "job details", job_path(posted_job.id) %>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -180,23 +202,31 @@
     <div class="container working_job-container">
       <% @working_jobs.each do |working_job| %>
         <div class ="row job-class">
-          <div class="row">
-            <div class="col s12 m12">
-              <div class='right-align'>
-                <%= link_to edit_job_path(working_job.id) do %>
-                  <i class="material-icons">edit</i>
-                <% end %>
+          <% if current_user &&                              #must be logged in
+              (working_job.owner.id == current_user.id ||    #is owner
+               working_job.freelancer_id.nil? ||             #jot still open
+               working_job.freelancer_id == current_user.id) #is freelancer %>
+            <div class="row">
+              <div class="col s12 m12">
+                <div class='right-align'>
+                  <%= link_to edit_job_path(working_job.id) do %>
+                    <i class="material-icons">edit</i>
+                  <% end %>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
 
           <div class="job-info-wrapper">
             <div class="row job-info-class">
-              <div class="col s12 m8 l8">
+              <div class="col s12 m4 l4">
                 <b>Title: </b> <%= working_job.title %>
               </div>
               <div class="col s12 m4 l4">
                 <b>Post Date: </b> <%= working_job.created_at.strftime("%m-%d-%Y") %>
+              </div>
+              <div class="col s12 m4 l4">
+                <b>Begin Date: </b> <%= working_job.begin_date.strftime("%m-%d-%Y") %>
               </div>
             </div>
           </div>
@@ -220,8 +250,14 @@
             <b>Job Description: </b><%= working_job.description %>
           </div>
 
-          <div class="col s12 m12">
-            <b>Description: </b> <%= working_job.description %>
+          <div class="job-info-wrapper">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <div class='right-align'>
+                  <%= link_to "job details", job_path(working_job.id) %>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
