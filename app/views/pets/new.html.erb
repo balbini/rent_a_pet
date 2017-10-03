@@ -2,17 +2,17 @@
   <%= form_for @pet do |f| %>
     <div class="field">
       <%= f.label :name %><br />
-      <%= f.text_field :name %>
+      <%= f.text_field :name, maxlength: 25 %>
     </div>
 
     <div class="field">
       <%= f.label :breed %><br />
-      <%= f.text_field :breed %>
+      <%= f.text_field :breed, maxlength: 30 %>
     </div>
 
     <div class="field">
       <%= f.label :age %><br />
-      <%= f.text_field :age %>
+      <%= f.number_field :age %>
     </div>
 
     <div class="field">
@@ -22,7 +22,7 @@
 
     <div class="field">
       <%= f.label :about_me %><br />
-      <%= f.text_field :about_me %>
+      <%= f.text_field :about_me, maxlength: 1000 %>
     </div>
 
     <%= hidden_field(:pet, :user_id, :value => current_user.id ) %>

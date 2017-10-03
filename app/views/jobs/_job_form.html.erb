@@ -1,10 +1,12 @@
 <div>
   <%= f.label :title, "Name your job posting"%>
-  <%= f.text_field :title, placeholder:"Need someone to watch Rocky!"%>
+  <%= f.text_field :title, maxlength: 50, placeholder:"Need someone to watch Rocky!"%>
 </div>
 <div>
   <%= f.label :description, "Describe the work to be done"%>
-  <%= f.text_field :description, placeholder:"I need someone to be watch Rocky as night. Duties include: Feeding dinner, a walk around the block every 2 hours, and giving medicine."%>
+  <%= f.text_field :description, maxlength: 1000, placeholder:"I need someone to be watch Rocky
+  as night. Duties include: Feeding dinner, a walk around the block every
+  2 hours, and giving medicine."%>
 </div>
 <% if @job.begin_date.nil? || @job.end_date.nil? %>
   <div>
