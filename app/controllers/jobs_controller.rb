@@ -12,6 +12,7 @@ class JobsController < ApplicationController
 
   def all
     if params[:query].present?
+      # @jobs = Job.search "*", where: {name: params[:query], status: params[:status]}
       @jobs = Job.search(params[:query], page: params[:page], per_page: 1, misspellings: {below: 5})
     else
       @jobs = []

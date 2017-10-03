@@ -58,6 +58,8 @@ class ApplicationController < ActionController::Base
   def find_job
     @job = Job.find_by_id(params[:id])
   end
+
+
   protected
 
   def configure_permitted_parameters

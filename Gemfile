@@ -68,4 +68,5 @@ gem 'searchkick'
 
 gem 'carrierwave', '~> 1.0'
 # For different versions of an image
+gem 'image_magick'
 gem 'mini_magick'
