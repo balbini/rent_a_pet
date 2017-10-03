@@ -65,3 +65,5 @@ gem 'friendly_id'
 gem 'kaminari', :git => 'https://github.com/kaminari/kaminari'
 
 gem 'searchkick'
+
+gem 'carrierwave', '~> 1.0'

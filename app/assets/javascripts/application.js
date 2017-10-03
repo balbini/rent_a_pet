@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require jquery
 //= require turbolinks
+//= require typeahead.bundle.min
 //= require_tree .
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
@@ -20,10 +21,12 @@
 $(document).on("turbolinks:load", function() {
   var threshold = 3;
 
+  // settin g the threshold to three - in the div.pet-container, specifically the children, where the word show is not visible (show is there for show more / show less) - if the legnth is greater than 3 then display the .show.more
   if ($("div.pet-container").children().not(".show").length > threshold) {
     $(".show.more").css("display", "block");
   }
 
+  // for show more, when you click it, for all the children on the for the .show.more parents change the display to show so it shows up.
   $(".show.more").on("click", function() {
     $(this).parent().children().not(".show").css("display", "block");
     $(this).parent().find(".show.less").css("display", "block");
