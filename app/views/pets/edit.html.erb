@@ -15,6 +15,10 @@
     <div>
       About Me:<%= f.text_area :about_me %>
     </div>
+    <div>
+      Image:<%= f.file_field :image %>
+    </div>
+
     <%= f.submit class: "btn waves-effect waves-light" %>
   <% end %>
 </div>
