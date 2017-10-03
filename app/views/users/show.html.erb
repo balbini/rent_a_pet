@@ -6,7 +6,7 @@
         <%= render "user_has_picture" %>
       </div>
       <div class="col s12 m10 offset-m1 prof-info user-class">
-        <% if @user.id == current_user.id %>
+        <% if current_user && (@user.id == current_user.id) %>
           <div class='right-align'>
             <%= link_to edit_user_registration_path(current_user) do %>
               <i class="material-icons">edit</i>
@@ -57,7 +57,7 @@
           </div>
 
           <div class="col s12 m8">
-            <% if @user.id == current_user.id %>
+            <% if current_user && (@user.id == current_user.id) %>
               <div class='right-align'>
                 <%= link_to edit_pet_path(pet.id) do %>
                   <i class="material-icons">edit</i>
@@ -109,10 +109,10 @@
     <div class="container posted_job-container">
       <% @posted_jobs.each do |posted_job| %>
         <div class ="row job-class">
-          <% if posted_job.owner.id == current_user.id ||%>
-          <%    (posted_job.freelancer_id && %>
-          <%    posted_job.freelancer_id == current_user.id) || %>
-          <%    posted_job.freelancer_id.nil? %>
+          <% if current_user &&                               #must be logged in
+                (posted_job.owner.id == current_user.id ||    #is owner
+                 posted_job.freelancer_id.nil? ||             #jot still open
+                 posted_job.freelancer_id == current_user.id) #is freelancer%>
             <div class="row">
               <div class="col s12 m12">
                 <div class='right-align'>
@@ -156,18 +156,23 @@
                   ">panorama_fish_eye</i>
               </div>
             </div>
-            <b>Job Description: </b><%= posted_job.description %>
-            <%= link_to "see more", job_path(posted_job.id) %>
 
-          </div>
-
-          <!-- <div class="row">
-            <div class="col s12 m12">
-              <div class='right-align'>
-                <%= link_to "see more", job_path(posted_job.id) %>
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <b>Job Description: </b><%= posted_job.description %>
               </div>
             </div>
-          </div> -->
+          </div>
+
+          <div class="job-info-wrapper">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <div class='right-align'>
+                  <%= link_to "job details", job_path(posted_job.id) %>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
       <% end %>
@@ -196,15 +201,20 @@
     <div class="container working_job-container">
       <% @working_jobs.each do |working_job| %>
         <div class ="row job-class">
-          <div class="row">
-            <div class="col s12 m12">
-              <div class='right-align'>
-                <%= link_to edit_job_path(working_job.id) do %>
-                  <i class="material-icons">edit</i>
-                <% end %>
+          <% if current_user &&                              #must be logged in
+              (working_job.owner.id == current_user.id ||    #is owner
+               working_job.freelancer_id.nil? ||             #jot still open
+               working_job.freelancer_id == current_user.id) #is freelancer %>
+            <div class="row">
+              <div class="col s12 m12">
+                <div class='right-align'>
+                  <%= link_to edit_job_path(working_job.id) do %>
+                    <i class="material-icons">edit</i>
+                  <% end %>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
 
           <div class="job-info-wrapper">
             <div class="row job-info-class">
@@ -237,7 +247,16 @@
               </div>
             </div>
             <b>Job Description: </b><%= working_job.description %>
-            <%= link_to "see more", job_path(working_job.id) %>
+          </div>
+
+          <div class="job-info-wrapper">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <div class='right-align'>
+                  <%= link_to "job details", job_path(working_job.id) %>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>

@@ -223,7 +223,7 @@ Job.create([
     expiration_date: "2017-10-10",
     owner: User.second,
     pet: User.second.pets.sample,
-    freelancer: User.second,
+    freelancer: User.first,
   },
   {
     title: "Dog walker needed",
