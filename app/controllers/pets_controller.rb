@@ -1,4 +1,5 @@
 class PetsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
   def index
     @pets = Pet.all
   end
@@ -24,7 +25,7 @@ class PetsController < ApplicationController
       @pet = Pet.find_by_id(params[:id])
     else
       flash[:notice] = "Cannot edit other pets"
-      redirect_to user_path(current_user.slug)
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -35,6 +36,7 @@ class PetsController < ApplicationController
       redirect_to user_path(current_user.slug)
     else
       flash[:error] = "Cannot edit other pets"
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -45,7 +47,7 @@ class PetsController < ApplicationController
       redirect_to user_path(current_user.slug)
     else
       flash[:error] = "Cannot delete other pets"
-      redirect_to user_path(current_user.slug)
+      redirect_back(fallback_location: root_path)
     end
   end
 
