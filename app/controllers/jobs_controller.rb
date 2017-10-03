@@ -18,26 +18,20 @@ class JobsController < ApplicationController
     end
   end
 
-  # def autocomplete
-  #   render json: Job.search(params[:query], autocomplete: false, limit: 10).map    do |job|
-  #     {
-  #       title: job.title,
-  #       description: job.description,
-  #       city: job.city,
-  #       zip: job.zip,
-  #       owner_name: job.owner.first_name,
-  #       freelancer_name: job.freelancer.nil? ? "" : job.freelancer.first_name,
-  #       pet_breed: job.pet.breed,
-  #     }
-  #   end
-  # end
+  def autocomplete
+    render json: Job.search(params[:query], {
+        fields: ["title", "description", "city", ":pet_breed"]
+        }).map(&:title)
+  end
+
+
 
   def show
     @job = Job.find(params[:id])
   end
 
   def show_all_jobs
-    @jobs = Job.all
+    @jobs = Job.all.order(status: :desc, created_at: :desc)
   end
 
   def new
@@ -117,9 +111,7 @@ class JobsController < ApplicationController
     if check_if_job_is_owners == true
       owner_slug = @job.owner.slug
       @job.destroy
-      redirect_to user_path(owner_slug)
-      # once path is set use the path below
-      # redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: root_path)
     else
       flash[:error] = "Sorry! Only the owner can delete the job"
       redirect_to job_path(@job.id)
