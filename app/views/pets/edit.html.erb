@@ -13,7 +13,7 @@
       Age:<%= f.number_field :age %>
     </div>
     <div>
-      About Me:<%= f.text_area :about_me %>
+      About Me:<%= f.text_area :about_me, maxlength: 1000 %>
     </div>
     <div>
       Image:<%= f.file_field :image %>
