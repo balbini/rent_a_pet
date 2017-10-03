@@ -1,8 +1,31 @@
 <div class="container center-align">
     <h1 class="center-align">Welcome to PetWork</h1>
-    <p class="center-align">Register to get started</p>
     <p class="center-align">
-      <%= link_to 'Register', new_user_registration_path, class: 'btn deep-purple btn-lg waves-effect' %>
-
+      <%= link_to 'Register', new_user_registration_path, class: 'btn btn-lg waves-effect' %>
     </p>
+    <p class="center-align">Register to get started</p>
+</div>
+<div class="container center-align">
+  <hr>
+  <h3>Mission Statement</h3>
+  <h6>PetWork is committed to bringing people together to help pet owners take care of their
+    pets.</h6>
+  <br>
+  <hr>
+  <br>
+  <img class="puppy center-align" src="http://cdn.akc.org/cavalier-puppy-leash-training.jpg">
+</div>
+<br>
+<div class="container job-search">
+  <div class="row">
+    <div class="col s12">
+      <h1>Search Jobs</h1>
+      <%= form_tag all_path, method: :get do %>
+        <div class='form-group'>
+          <%= text_field_tag :query, params[:query], class: 'form-control typeahead' %>
+          <%= submit_tag 'Search', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

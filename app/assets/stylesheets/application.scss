@@ -19,7 +19,14 @@
  @import "materialize/extras/nouislider";
 
 .nav-wrapper {
-  background: #5e35b1;
+  background: #1384ec;
+}
+.btn {
+  background-color: #1384ec;
+}
+
+.brand-logo {
+  padding: 2%;
 }
 
 p {
@@ -31,7 +38,7 @@ h1 {
 }
 
 body {
-  background: #e3f2fd;
+  background: #faebd7;
 }
 
 #sidenav-overlay{
@@ -67,6 +74,11 @@ body {
 
 .show:hover {
   cursor: pointer;
+}
+
+.puppy {
+  width: 50vw;
+  border-radius: 40px;
 }
 
 // this is there the div is hidden - so for anything in the .pet-container after the 3rd div, make it display non shich is then flipped later
