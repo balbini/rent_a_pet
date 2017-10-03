@@ -47,9 +47,7 @@
                 <b>Dollar Value: </b> <%= @job.dollar_value %>
                 <% num = @job.dollar_value <= 25 ? 1 : (@job.dollar_value/25).round %>
                 <% num = num > 4 ? 4 : num %>
-                <% num.times do %>
-                   <i class="material-icons green">attach_money</i>
-                <% end %>
+                <span class="green-dollar"> <%= "$" * num %> </span>
               </div>
 
             </div>
