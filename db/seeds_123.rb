@@ -98,7 +98,7 @@ Pet.create([
     name: "Sagget",
     breed: "Labrador",
     age: 1,
-    image: Rails.root.join("app/assets/images/labrador.jpeg").open,
+    image: "labrador.jpeg",
     user: User.second,
   },
   {
@@ -203,7 +203,6 @@ Job.create([
     expiration_date: "2017-10-06",
     owner: User.first,
     pet: User.first.pets.sample,
-    freelancer: User.third,
   },
   {
     title: "Special dog needs special care",
@@ -223,7 +222,6 @@ Job.create([
     expiration_date: "2017-10-10",
     owner: User.second,
     pet: User.second.pets.sample,
-    freelancer: User.first,
   },
   {
     title: "Dog walker needed",
@@ -242,6 +240,7 @@ Job.create([
     expiration_date: "2017-10-09",
     owner: User.second,
     pet: User.second.pets.sample,
+    freelancer: User.third,
   },
   {
     title: "Seeking a dog pack for my dog to join in on weekend",
@@ -262,6 +261,7 @@ Job.create([
     expiration_date: "2017-10-05",
     owner: User.third,
     pet: User.third.pets.sample,
+    freelancer: User.first,
   },
   {
     title: "Going abroad for 4 weeks and need help on my 2 puppies",
@@ -295,7 +295,7 @@ Job.create([
     end_date: "2017-12-15",
     dollar_value: 25,
     type_of_job: "Walk the dog",
-    status: "Completed",
+    status: "Closed",
     recurring: "no",
     pet_location: "owner's home",
     expiration_date: "2017-10-20",
@@ -350,7 +350,6 @@ Job.create([
     expiration_date: "2017-10-01",
     owner: User.second,
     pet: User.second.pets.sample,
-    freelancer: User.first,
   },
   {
     title: "Take my dog home for a day",
@@ -389,5 +388,6 @@ Job.create([
     expiration_date: "2017-10-10",
     owner: User.first,
     pet: User.first.pets.sample,
+    freelancer: User.third,
   },
 ])
