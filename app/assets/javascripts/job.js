@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", function(){
+// document.addEventListener("turbolinks:load", function(){
   // $('.datepicker').pickadate({
   //   selectMonths: true, // Creates a dropdown to control month
   //   selectYears: 15, // Creates a dropdown of 15 years to control year,
@@ -17,7 +17,7 @@ document.addEventListener("turbolinks:load", function(){
   //     },
   //     queryTokenizer: Bloodhound.tokenizers.whitespace,
   //     remote: {
-  //       url: '../jobs/autocomplete?query=%QUERY',
+  //       url: '/jobs/autocomplete?query=%QUERY',
   //       wildcard: '%QUERY'
   //     }
   //   });
@@ -37,4 +37,22 @@ document.addEventListener("turbolinks:load", function(){
   //
   // $(document).ready(ready);
   // $(document).on('page:load', ready);
+
+// })
+
+$(document).on('turbolinks:load', function(){
+  var jobs = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.whitespace,
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    remote: {
+      url: "/jobs/autocomplete?query=%QUERY",
+      wildcard: "%QUERY"
+    }
+  });
+  $('.typeahead').typeahead(null, {
+    hint: true,
+    highlight: true,
+    minLength: 1,
+    source: jobs,
+  })
 })
