@@ -26,6 +26,6 @@
     </div>
 
     <%= hidden_field(:pet, :user_id, :value => current_user.id ) %>
-    <%= f.submit "Add Pet" %>
+    <%= f.submit "Add Pet", class: "btn" %>
   <% end %>
 </div>

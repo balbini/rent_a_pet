@@ -39,5 +39,5 @@ $(document).on("turbolinks:load", function() {
   $(".carousel").carousel({fullWidth: true});
   setInterval(function(){
     $(".carousel").carousel("next");
-  }, 2000);
+  }, 5000);
 });

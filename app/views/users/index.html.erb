@@ -1,8 +1,9 @@
 <div class="container center-align">
     <h1 class="center-align">Welcome to PetWork</h1>
       <div class= "carousel">
-          <a class= "carousel-item" href="#one!"><img class="puppy center-align" src="http://cdn.akc.org/cavalier-puppy-leash-training.jpg"></a>
+          <a class= "carousel-item" href="#one!"><img class="puppy center-align" src="https://static.pexels.com/photos/275717/pexels-photo-275717.jpeg"></a>
           <a class= "carousel-item" href="#two!"><img class="puppy center-align" src="https://static.pexels.com/photos/356378/pexels-photo-356378.jpeg"></a>
+          <a class= "carousel-item" href="#three!"><img class="puppy center-align" src="http://cdn.akc.org/cavalier-puppy-leash-training.jpg"></a>
       </div>
 </div>
     <br>
@@ -12,9 +13,12 @@
       <%= link_to 'Register', new_user_registration_path, class: 'btn btn-lg waves-effect' %>
     </p>
 </div>
-<div class="container center-align col l6 m6 s6 search">
-  <%= render '/jobs/search_jobs'%>
-</div>
+  <div class="container">
+    <div class="center-align col l12 m12 s12">
+      <%= render '/jobs/search_jobs'%>
+    </div>
+  </div>
+
 <div class="row">
   <div class="center-align col l6 m6 s12">
     <br>
