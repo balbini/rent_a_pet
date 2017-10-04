@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container edit-pet">
   <%= form_for @pet do |f| %>
     <div class="field">
       <%= f.label :name %><br />
@@ -12,7 +12,7 @@
 
     <div class="field">
       <%= f.label :age %><br />
-      <%= f.number_field :age %>
+      <%= f.number_field :age, max: 25 %>
     </div>
 
     <div class="field">
@@ -26,6 +26,6 @@
     </div>
 
     <%= hidden_field(:pet, :user_id, :value => current_user.id ) %>
-    <%= f.submit "Add Pet" %>
+    <%= f.submit "Add Pet", class: "btn" %>
   <% end %>
 </div>
