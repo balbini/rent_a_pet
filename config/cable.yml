@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://redistogo:65af17b2388abb8614a1b77400d5cb68@greeneye.redistogo.com:10801/
   channel_prefix: rent_a_pet_production
