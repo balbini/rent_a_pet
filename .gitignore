@@ -24,3 +24,6 @@ app/assets/.DS_Store
 app/assets/images/RentAPet.html
 app/assets/images/RentAPet_files/
 
+
+# Ignore application configuration
+/config/application.yml

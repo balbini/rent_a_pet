@@ -69,3 +69,7 @@ gem 'searchkick'
 gem 'carrierwave', '~> 1.0'
 # For different versions of an image
 gem 'mini_magick'
+
+gem "figaro"
+
+gem "fog-aws"
