@@ -10,7 +10,7 @@
       Breed:<%= f.text_area :breed, maxlength: 30 %>
     </div>
     <div>
-      Age:<%= f.number_field :age %>
+      Age:<%= f.number_field :age, max: 25 %>
     </div>
     <div>
       About Me:<%= f.text_area :about_me, maxlength: 1000 %>
