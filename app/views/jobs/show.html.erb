@@ -6,7 +6,7 @@
     </div>
 
     <div class="container job-container">
-        <div class ="row job-class">
+        <div class ="row job-class z-depth-5">
           <% if current_user &&                      #must be logged in
               (@job.owner.id == current_user.id ||    #is owner
                @job.freelancer_id.nil? ||             #jot still open
@@ -50,7 +50,7 @@
                   <% num = @job.dollar_value <= 25 ? 1 : (@job.dollar_value/25).round %>
                   <% num = num > 4 ? 4 : num %>
                   <span class="green-dollar"> <%= "$" * num %> </span>
-                <% end %>      
+                <% end %>
               </div>
 
             </div>
