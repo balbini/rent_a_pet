@@ -39,8 +39,9 @@ $(document).on("turbolinks:load", function() {
     $(this).parent().find(".show.more").css("display", "block");
     $(this).hide();
   });
-  $(".carousel").carousel({fullWidth: true});
+  $(".slider").slider({fullWidth: true});
   setInterval(function(){
-    $(".carousel").carousel("next");
-  }, 5000);
+    $(".slider").slider("start");
+    $(".slider").slider("next");
+  }, 3000);
 });
