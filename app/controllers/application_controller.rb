@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
     else
       true
     end
-    # !job_freelancer_params["freelancer_id"].nil?
+    # !job_freelancer_params["freelancer_id"].nil? same thing as saying if job_freelancer_params.nil? is true then return false
   end
 
   def check_if_job_is_freelancers_for_submission

@@ -85,6 +85,7 @@ main {
 }
 
 
+// this is the CSS that says for everything div that is created AFTER the 3rd one (n+4 child) set the display to none
 .pet-container div:nth-child(n+4),
 .posted_job-container .job-class:nth-child(n+4),
 .working_job-container .job-class:nth-child(n+4) {
