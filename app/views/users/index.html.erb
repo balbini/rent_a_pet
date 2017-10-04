@@ -1,20 +1,44 @@
 <div class="container center-align">
     <h1 class="center-align">Welcome to PetWork</h1>
+      <div class= "carousel">
+          <a class= "carousel-item" href="#one!"><img class="puppy center-align" src="http://cdn.akc.org/cavalier-puppy-leash-training.jpg"></a>
+          <a class= "carousel-item" href="#two!"><img class="puppy center-align" src="https://static.pexels.com/photos/356378/pexels-photo-356378.jpeg"></a>
+      </div>
+</div>
+    <br>
+    <br>
+  <div>
     <p class="center-align">
       <%= link_to 'Register', new_user_registration_path, class: 'btn btn-lg waves-effect' %>
     </p>
-    <p class="center-align">Register to get started</p>
 </div>
-<div class="container center-align">
-  <hr>
-  <h3>Mission Statement</h3>
-  <h6>PetWork is committed to bringing people together to help pet owners take care of their
-    pets.</h6>
-  <br>
-  <hr>
-  <br>
-  <img class="puppy center-align" src="http://cdn.akc.org/cavalier-puppy-leash-training.jpg">
+<div class="container center-align col l6 m6 s6 search">
+  <%= render '/jobs/search_jobs'%>
 </div>
-<br>
-
-<%= render '/jobs/search_jobs'%>
+<div class="row">
+  <div class="center-align col l6 m6 s12">
+    <br>
+    <br>
+    <br>
+    <h3 class="mission">Mission Statement</h3>
+    <h6>PetWork is committed to bringing people together to help pet owners take care of their
+      pets.</h6>
+    <br>
+    <!-- <img class="mission_dog" src="https://www.cheatsheet.com/wp-content/uploads/2017/04/Beautiful-dog-rhodesian-ridgeback-puppy.jpg"> -->
+    <br>
+  </div>
+  <div class="center-align col l6 m6 s12">
+    <br>
+    <br>
+    <br>
+    <h3 class="customerex">Customer Experience</h3>
+    <h6>I signed up with PetWork because I needed help with my dog when I started a new job.
+    Working with them has been a great experience! All the freelancers I have worked with have
+    been wonderful and well qualified. I recommend them to anyone I can.
+    -John Smith
+    </h6>
+    <br>
+    <!-- <img class="customer_dog" src="https://s3-media4.fl.yelpcdn.com/buphoto/Y7bANmtYpuuH7axUASoc7A/o.jpg"> -->
+    <br>
+  </div>
+</div>

@@ -36,4 +36,8 @@ $(document).on("turbolinks:load", function() {
     $(this).parent().find(".show.more").css("display", "block");
     $(this).hide();
   });
+  $(".carousel").carousel({fullWidth: true});
+  setInterval(function(){
+    $(".carousel").carousel("next");
+  }, 2000);
 });

@@ -1,11 +1,11 @@
 <div class="container job-search">
   <div class="row">
-    <div class="col s12">
-      <span class="search_header">Search Job Postings </span><span class="search_sub">Find the right job for you!</span>
+    <div class=" center-align col l6 m6 s6">
+      <span class="search_header">Search Job Postings</span>
 
       <%= form_tag all_path, method: :get do %>
       <div class='form-group'>
-        <%= text_field_tag :query, params[:query], class: 'form-control typeahead' %>
+        <%= text_field_tag :query, params[:query], class: 'form-control typeahead', placeholder: "Find the right job for you!" %>
         <%= submit_tag 'search', class: 'material-icons search_button' %>
       <% end %>
     </div>

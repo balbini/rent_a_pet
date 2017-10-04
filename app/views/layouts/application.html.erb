@@ -9,55 +9,71 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
   </head>
 
   <body>
-    <!-- NAV Bar START -->
-    <div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper">
-        <div class="brand-logo">
-          <%= link_to 'PetWork', root_path %>
+    <main>
+      <!-- NAV Bar START -->
+      <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <div class="brand-logo">
+            <%= link_to 'PetWork', root_path %>
+          </div>
+          <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu
+          </i></a>
+            <ul class="right hide-on-med-and-down">
+              <li><%= link_to 'Home', root_path %></li>
+              <% if user_signed_in? %>
+                    <li><%= link_to 'Profile', user_path(current_user) %></li>
+                    <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to 'Log In', new_user_session_path %></li>
+                <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+              <% end %>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+              <li><%= link_to 'Home', root_path %></li>
+              <% if user_signed_in? %>
+                    <li><%= link_to 'Profile', edit_user_registration_path %></li>
+                    <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to 'Log In', new_user_session_path %></li>
+                <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+              <% end %>
+            </ul>
         </div>
-        <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu
-        </i></a>
-          <ul class="right hide-on-med-and-down">
-            <li><%= link_to 'Home', root_path %></li>
-            <% if user_signed_in? %>
-                  <li><%= link_to 'Profile', user_path(current_user) %></li>
-                  <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
-            <% else %>
-              <li><%= link_to 'Log In', new_user_session_path %></li>
-              <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-            <% end %>
-          </ul>
-          <ul class="side-nav" id="mobile-demo">
-            <li><%= link_to 'Home', root_path %></li>
-            <% if user_signed_in? %>
-                  <li><%= link_to 'Profile', edit_user_registration_path %></li>
-                  <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
-            <% else %>
-              <li><%= link_to 'Log In', new_user_session_path %></li>
-              <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-            <% end %>
-          </ul>
+      </nav>
+    </div>
+      <!-- NAV Bar END -->
+
+
+      <!-- FLASH MESSAGE START-->
+        <div class="col s8 push-s2">
+          <% flash.each do |name, msg| %>
+           <div id='toast-container'>
+             <%= javascript_tag "Materialize.toast('#{msg}', 4000)" %>
+           </div>
+          <% end %>
+        </div>
+      <!-- FLASH END -->
+
+
+
+
+        <%= yield %>
+
+
+    </main>
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l11 m11 s11">
+            <h6 class="footer-content right-align">Contact Us</h6>
+          </div>
+        </div>
       </div>
-    </nav>
-  </div>
-    <!-- NAV Bar END -->
-
-
-    <!-- FLASH MESSAGE START-->
-      <div class="col s8 push-s2">
-        <% flash.each do |name, msg| %>
-         <div id='toast-container'>
-           <%= javascript_tag "Materialize.toast('#{msg}', 4000)" %>
-         </div>
-        <% end %>
-      </div>
-    <!-- FLASH END -->
-
-      <%= yield %>
-
+    </footer>
   </body>
 </html>

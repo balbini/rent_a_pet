@@ -39,12 +39,20 @@ h1 {
 
 body {
   background: #faebd7;
+  display:flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
 }
 
 #sidenav-overlay{
   z-index: 996
 }
-
+.container {
+  width: 100vw;
+}
 
 // PAGINATION CSS - https://stackoverflow.com/questions/26615157/pagination-kaminari-no-css-applyed
 .pagination a, .pagination span.current, .pagination span.gap {
@@ -85,4 +93,31 @@ body {
 .posted_job-container .job-class:nth-child(n+4),
 .working_job-container .job-class:nth-child(n+4) {
   display: none;
+}
+.mission {
+  font-family: "Nunito", "sans-serif";
+}
+.customerex {
+  font-family: "Nunito", "sans-serif";
+}
+.search {
+  font-family: "Nunito", "sans-serif";
+  width: 50vw;
+}
+.mission_dog {
+  width: 30vw;
+}
+.customer_dog {
+  width: 30vw;
+}
+footer {
+  background-color: #1384ec !important;
+  width:100vw;
+}
+.footer-content {
+  padding-left: 2%;
+}
+
+.carousel .carousel-item {
+  width: 100%;
 }
