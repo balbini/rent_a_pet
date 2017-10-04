@@ -7,9 +7,10 @@ class User < ApplicationRecord
   has_many :pets, dependent: :destroy
   # user has many pets - so if the user gets deleted so their pets
 
-  # user can have many messages and many chatrooms through messages
+  # user can have many messages and many chatrooms through subscriptions since a user can have many chats
   has_many :messages
-  has_many :chatrooms, through: :messages
+  has_many :subscriptions
+  has_many :chatrooms, through: :subscriptions
 
   # Include default devise modules. Others available are:
   # :confirmable, :timeoutable and :omniauthable
@@ -25,6 +26,14 @@ class User < ApplicationRecord
   # creation of the friendly_id for the urls
   def first_name_and_last_name
     "#{first_name}-#{last_name}"
+  end
+
+  def existing_chatrooms_users
+    existing_chatroom_users = []
+      self.chatrooms.each do |chatroom|
+        existing_chatroom_users.concat(chatroom.subscriptions.where.not(user_id: self.id).map {|subscription| subscription.user})
+      end
+    existing_chatroom_users.uniq
   end
 
 end
