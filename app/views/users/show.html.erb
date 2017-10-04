@@ -1,8 +1,8 @@
 <!-- Start of Profile -->
 <div class="user-section">
   <div class="container">
-    <div class="row">
-      <div class="col s4 offset-s4 m4 offset-m4">
+    <div class="row z-depth-5">
+      <div class="col s4 offset-s4 m4 offset-m4 z-depth-5">
         <%= image_tag(@user.image_url(:thumb).to_s, class: "circle prof-image") %>
 
       </div>
@@ -53,10 +53,10 @@
       <% @pets.each do |pet| %>
         <div class="row pet-class">
           <div class="col s12 m4">
-            <%= image_tag(pet.image, class:'pet-image') %>
+            <%= image_tag(pet.image, class:'pet-image z-depth-5') %>
           </div>
 
-          <div class="col s12 m8">
+          <div class="col s12 m8 z-depth-5 user-pet">
             <% if current_user && (@user.id == current_user.id) %>
               <div class='right-align'>
                 <%= link_to edit_pet_path(pet.id) do %>
@@ -108,7 +108,7 @@
 
     <div class="container posted_job-container">
       <% @posted_jobs.each do |posted_job| %>
-        <div class ="row job-class">
+        <div class ="row job-class z-depth-5">
           <% if current_user &&                               #must be logged in
                 (posted_job.owner.id == current_user.id ||    #is owner
                  posted_job.freelancer_id.nil? ||             #jot still open
@@ -201,7 +201,7 @@
 
     <div class="container working_job-container">
       <% @working_jobs.each do |working_job| %>
-        <div class ="row job-class">
+        <div class ="row job-class z-depth-5">
           <% if current_user &&                              #must be logged in
               (working_job.owner.id == current_user.id ||    #is owner
                working_job.freelancer_id.nil? ||             #jot still open

@@ -11,15 +11,16 @@
 }
 
 .user-class {
-  border: 2px solid #8080ff;
+  border: 2px transparent;
   border-radius: 8px;
 }
 
 .user-info-wrapper {
   padding: 0% 2%;
 }
-
-.user-info-class {
-  border: 1px solid #b3b3ff;
-  border-radius: 4px;
+.user-pet {
+  border-radius: 0% 0% 0% 0%;
 }
+// * {
+//   border: 1px solid black;
+// }
