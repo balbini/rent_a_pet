@@ -17,4 +17,7 @@ Rails.application.routes.draw do
 
   get '/secret', to: 'jobs#secret', as: :secret
   get '/show_all_jobs', to: 'jobs#show_all_jobs'
+
+  resources :chatrooms, param: :slug
+  resources :messages
 end

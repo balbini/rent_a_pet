@@ -7,6 +7,10 @@ class User < ApplicationRecord
   has_many :pets, dependent: :destroy
   # user has many pets - so if the user gets deleted so their pets
 
+  # user can have many messages and many chatrooms through messages
+  has_many :messages
+  has_many :chatrooms, through: :messages
+
   # Include default devise modules. Others available are:
   # :confirmable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
