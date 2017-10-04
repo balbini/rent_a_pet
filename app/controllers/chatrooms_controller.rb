@@ -2,8 +2,8 @@
 require 'securerandom'
 
 class ChatroomsController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :edit, :update]
-
+  before_action :authenticate_user!, only: [:index, :show, :edit, :update]
+  before_action :before_enter_room, only: [:show]
   def index
     chatrooms = current_user.chatrooms
     @existing_chatrooms_users = current_user.existing_chatrooms_users
@@ -26,9 +26,19 @@ class ChatroomsController < ApplicationController
     @other_user = User.find(params[:other_user])
     @chatroom = Chatroom.find_by(id: params[:id])
     @message = Message.new
+
   end
 
   private
+
+  def before_enter_room
+    @other_user = User.find(params[:other_user])
+    if (Chatroom.find(params[:id]).subscriptions[0].user_id == @other_user.id || Chatroom.find(params[:id]).subscriptions[1].user_id == @other_user.id) && (Chatroom.find(params[:id]).subscriptions[0].user_id == current_user.id || Chatroom.find(params[:id]).subscriptions[1].user_id == current_user.id)
+    else
+      flash[:error] = "Sorry, the conversation with between 'A' and 'B', please 'C' your way out."
+      redirect_to user_chatrooms_path(current_user)
+    end
+  end
 
   def find_chatroom(second_user)
     chatrooms = current_user.chatrooms
