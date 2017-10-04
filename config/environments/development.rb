@@ -1,4 +1,9 @@
 Rails.application.configure do
+  ### chat start
+  # How does the consumer know where to connect when sending messages? We specify the development and production socket URIs in the appropriate environment files, and pass it through to the consumer via the action_cable_meta_tag.
+  config.action_cable.url = "ws://localhost:3000/cable"
+  ### chat end
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

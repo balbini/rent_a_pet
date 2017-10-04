@@ -1,0 +1,29 @@
+Existing chatrooms show up here
+<ul>
+ <% if @existing_chatrooms_users %>
+   <% @existing_chatrooms_users.each do |other_user| %>
+    <% if other_user != current_user %>
+      <li>
+        <!-- this is where I am sending back the 'other_user' and that other_user id -->
+        <%= link_to(user_chatrooms_path(current_user, :other_user => other_user.id), method: :post) do %>
+        <%= other_user.email %>
+        <% end %>
+      </li>
+     <% end %>
+   <% end %>
+  <% end %>
+</ul>
+------<br>
+All Users - see other users email address which links to their chat room
+<ul>
+  <% User.all.each do |other_user| %>
+   <% if other_user != current_user %>
+     <li>
+       <%= link_to(user_chatrooms_path(current_user, :other_user => other_user.id), method: :post) do %>
+       <%= other_user.email %>
+       <% end %>
+     </li>
+    <% end %>
+  <% end %>
+</ul>
+<li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
