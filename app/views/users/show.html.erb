@@ -201,7 +201,7 @@
 
     <div class="container working_job-container">
       <% @working_jobs.each do |working_job| %>
-        <div class ="row job-class">
+        <div class ="row job-class z-depth-5">
           <% if current_user &&                              #must be logged in
               (working_job.owner.id == current_user.id ||    #is owner
                working_job.freelancer_id.nil? ||             #jot still open
