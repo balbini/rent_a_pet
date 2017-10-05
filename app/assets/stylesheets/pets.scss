@@ -5,12 +5,15 @@
 
 
 .pet-image {
-  border-radius: 6px;
-  border-style: outset;
   width: 98%;
-  margin: 5% 1%;
+  border: 2px transparent;
+  border-radius: 8px;
 }
 
 .pet-info-wrapper {
   padding: 0% 2% 0% 2%;
+}
+.pet-container {
+  border: 2px transparent;
+  border-radius: 8px;
 }

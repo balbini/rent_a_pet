@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <!-- @other_user.email this is the person that is NOT the current user -->
   <h5>Chat with <%= @other_user.email %></h5>
   <% if @chatroom.messages.any? %>
@@ -10,6 +10,7 @@
     </div>
   <%end%>
 </div>
+<div class="container">
 <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
 </div>
 <script>
