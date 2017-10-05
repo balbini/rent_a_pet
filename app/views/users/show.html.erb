@@ -3,6 +3,7 @@
   <div class="container">
     <div class="row z-depth-5">
       <div class="col s4 offset-s4 m4 offset-m4">
+        <br>
         <%= image_tag(@user.image_url(:thumb).to_s, class: "circle prof-image") %>
 
       </div>
@@ -27,10 +28,11 @@
             </div>
           </div>
         </div>
-        <b>About Me: </b><%= @user.about_me %> <br>
+        <b>About Me: </b><%= @user.about_me %> <br><br>
 
       </div>
     </div>
+    <div class="row">
     <div class="center-align">
         <p><%= link_to 'Add Pet', new_pet_path, class: 'btn btn-lg' %>
         </p>
@@ -38,7 +40,7 @@
         </p>
         <p><%= link_to 'Chat', user_chatrooms_path(current_user), class: 'btn btn-lg' %>
         </p>
-      </div>
+    </div>
   </div>
 </div>
 <!-- end profile -->
@@ -94,7 +96,7 @@
 
   <% else %>
     <div class="container">
-      <h5>You have no pet yet</h5>
+      <h5>No Pets Yet</h5>
     </div>
   <% end %>
 </div>
@@ -104,7 +106,7 @@
   <% if @posted_jobs.length != 0 %>
     <div class="container">
       <div class="row">
-        <h5> My Job Posting </h5>
+        <h5> My Posted Jobs</h5>
       </div>
     </div>
 
@@ -162,7 +164,7 @@
 
             <div class="row">
               <div class="col s12 m12 l12">
-                <b>Job Description: </b><%= posted_job.description %>
+                <b>Job Description: </b><%= posted_job.description.truncate(200) %>
               </div>
             </div>
           </div>
@@ -187,7 +189,7 @@
     </div>
   <% else %>
     <div class="container">
-      <h5>You have no job posted yet</h5>
+      <h5>You Have Not Posted Any Jobs</h5>
     </div>
   <% end %>
 </div>
@@ -197,7 +199,7 @@
   <% if @working_jobs.length != 0 %>
     <div class="container">
       <div class="row">
-        <h5> My jobs that I am working on </h5>
+        <h5> My Working Jobs </h5>
       </div>
     </div>
 
@@ -249,7 +251,7 @@
                   ">panorama_fish_eye</i>
               </div>
             </div>
-            <b>Job Description: </b><%= working_job.description %>
+            <b>Job Description: </b><%= working_job.description.truncate(100) %>
           </div>
 
           <div class="job-info-wrapper">
