@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
   ### chat end
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'users#index'
-  # root to: 'chatrooms#index'
-  # resources :jobs
+
   resources :jobs do
     collection do
       get :autocomplete

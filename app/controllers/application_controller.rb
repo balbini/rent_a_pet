@@ -58,6 +58,7 @@ class ApplicationController < ActionController::Base
   def find_job
     @job = Job.find_by_id(params[:id])
   end
+
   protected
 
   def configure_permitted_parameters
@@ -65,8 +66,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :about_me, :address, :city, :state, :zip, :image])
   end
 
-  def after_sign_in_path_for(resource_or_scope)
-   current_user
-  end
+
 
 end
