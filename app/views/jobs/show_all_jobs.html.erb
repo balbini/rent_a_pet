@@ -46,12 +46,15 @@
               </div>
 
               <div class="col s12 m4 l4">
-                <b>Dollar Value: </b> <%= job.dollar_value %>
-                <% num = job.dollar_value <= 25 ? 1 : (job.dollar_value/25).round %>
-                <% num = num > 4 ? 4 : num %>
-                <span class="green-dollar">
-                  <%= "$" * num %>
-                </span>
+                <b>Dollar Value: </b>
+                <% if job.dollar_value %>
+                  <%= job.dollar_value %>
+                  <% num = job.dollar_value <= 25 ? 1 : (job.dollar_value/25).round %>
+                  <% num = num > 4 ? 4 : num %>
+                  <span class="green-dollar">
+                    <%= "$" * num %>
+                  </span>
+                <% end %>
               </div>
 
             </div>

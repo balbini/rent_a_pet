@@ -8,7 +8,7 @@ class User < ApplicationRecord
   # user has many pets - so if the user gets deleted so their pets
 
   # user can have many messages and many chatrooms through subscriptions since a user can have many chats
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_many :subscriptions
   has_many :chatrooms, through: :subscriptions
 

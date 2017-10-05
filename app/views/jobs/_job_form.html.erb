@@ -23,6 +23,10 @@
   <%= f.label :end_date, "Date for the job to end"%>
   <%= f.date_field :end_date, min: Date.today %>
 </div>
+<div>
+  <%= f.label :dollar_value, "Dollar Value"%>
+  <%= f.number_field :dollar_value, max: 1000 %>
+</div>
 
 <div>
   <%= f.label :city, "Location of job"%>

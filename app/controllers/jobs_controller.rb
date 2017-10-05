@@ -122,7 +122,7 @@ class JobsController < ApplicationController
 
   private
   def job_params
-    params.require(:job).permit(:title, :description, :owner_id, :city, :pet_id, :begin_date, :end_date, :status)
+    params.require(:job).permit(:title, :description, :owner_id, :city, :pet_id, :begin_date, :end_date, :status, :dollar_value)
   end
   def job_freelancer_params
     params.require(:job).permit(:status, :freelancer_id)
