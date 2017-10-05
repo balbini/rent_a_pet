@@ -1,4 +1,4 @@
-<div class="container z-depth-5">
+<div class="container">
   <h1>Edit Pet</h1>
 
   <%= form_for @pet do |f| %>
@@ -18,7 +18,8 @@
     <div>
       Image:<%= f.file_field :image %>
     </div>
-
+    <br>
     <%= f.submit class: "btn waves-effect waves-light" %>
   <% end %>
 </div>
+<br>
